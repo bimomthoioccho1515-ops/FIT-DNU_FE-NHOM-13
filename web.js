@@ -54,15 +54,16 @@ let cart = [];
 const productGrid = document.getElementById("productGrid");
 const cartItems = document.getElementById("cartItems");
 const total = document.getElementById("total");
+const searchInput = document.getElementById("searchInput");
 
 function money(x) {
   return x.toLocaleString('vi-VN') + "₫";
 }
 
-function renderProducts() {
+function renderProducts(filteredProducts = products) {
   productGrid.innerHTML = "";
 
-  products.forEach(product => {
+  filteredProducts.forEach(product => {
     productGrid.innerHTML += `
       <div class="card">
         <img src="${product.image}" alt="${product.name}">
@@ -87,12 +88,15 @@ function renderCart() {
   cartItems.innerHTML = "";
   let sum = 0;
 
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
     sum += item.price;
     cartItems.innerHTML += `
       <div class="cart-item">
-        <span>${item.name}</span>
-        <span>${money(item.price)}</span>
+        <div class="cart-info">
+          <span>${item.name}</span>
+          <span>${money(item.price)}</span>
+        </div>
+        <button class="delete-btn" onclick="removeFromCart(${index})">Xóa</button>
       </div>
     `;
   });
@@ -100,4 +104,18 @@ function renderCart() {
   total.innerText = money(sum);
 }
 
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function searchProducts() {
+  const query = searchInput.value.toLowerCase();
+  const filtered = products.filter(product => product.name.toLowerCase().includes(query));
+  renderProducts(filtered);
+}
+
+searchInput.addEventListener('input', searchProducts);
+
+// Initial render
 renderProducts();
