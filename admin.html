@@ -51,6 +51,36 @@
 
         <div class="inventory-section">
             <h3><i class="fas fa-warehouse"></i> Quản Lý Kho Hàng</h3>
+            <div class="inventory-actions">
+                <div class="inventory-form">
+                    <h4>Thêm sản phẩm mới vào kho</h4>
+                    <form id="newProductForm" onsubmit="addNewProduct(event)">
+                        <div class="form-row">
+                            <input type="text" id="productName" placeholder="Tên sản phẩm" required>
+                            <input type="text" id="productCategory" placeholder="Danh mục" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" id="productColor" placeholder="Màu sắc" required>
+                            <input type="number" id="productPrice" placeholder="Giá (VNĐ)" min="0" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="productStock" placeholder="Số lượng" min="0" required>
+                            <input type="url" id="productImage" placeholder="URL hình ảnh" required>
+                        </div>
+                        <button type="submit">Thêm vào kho</button>
+                    </form>
+                </div>
+                <div class="inventory-form">
+                    <h4>Nhập hàng vào kho</h4>
+                    <form id="restockForm" onsubmit="restockProduct(event)">
+                        <div class="form-row">
+                            <select id="restockSelect" required></select>
+                            <input type="number" id="restockQuantity" placeholder="Số lượng nhập" min="1" required>
+                        </div>
+                        <button type="submit">Nhập kho</button>
+                    </form>
+                </div>
+            </div>
             <table class="inventory-table" id="inventoryTable">
                 <thead>
                     <tr>

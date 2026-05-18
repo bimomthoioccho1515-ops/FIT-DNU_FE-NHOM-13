@@ -299,6 +299,12 @@ button:hover{
   padding:40px;
 }
 
+.stock-label{
+  font-size:14px;
+  margin-bottom:12px;
+  color:#444;
+}
+
 .cart{
   background:white;
   margin:40px;
