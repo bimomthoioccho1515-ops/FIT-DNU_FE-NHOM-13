@@ -1,8 +1,11 @@
-const products = [
+const STORAGE_KEY = 'warehouseInventory';
+
+const initialProducts = [
   {
     id: 1,
     name: "Áo sơ mi trắng",
     price: 450000,
+    stock: 150,
     category: "Quần áo",
     color: "white",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800"
@@ -11,6 +14,7 @@ const products = [
     id: 2,
     name: "Giày thể thao",
     price: 1200000,
+    stock: 45,
     category: "Giày",
     color: "black",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800"
@@ -19,6 +23,7 @@ const products = [
     id: 3,
     name: "Áo hoodie xám",
     price: 650000,
+    stock: 70,
     category: "Quần áo",
     color: "black",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800"
@@ -27,6 +32,7 @@ const products = [
     id: 4,
     name: "Áo khoác jean",
     price: 890000,
+    stock: 120,
     category: "Quần áo",
     color: "blue",
     image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800"
@@ -35,6 +41,7 @@ const products = [
     id: 5,
     name: "Giày sneaker trắng",
     price: 1450000,
+    stock: 20,
     category: "Giày",
     color: "white",
     image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800"
@@ -43,6 +50,7 @@ const products = [
     id: 6,
     name: "Túi xách nữ",
     price: 980000,
+    stock: 80,
     category: "Túi xách",
     color: "pink",
     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800"
@@ -51,6 +59,7 @@ const products = [
     id: 7,
     name: "Đồng hồ thời trang",
     price: 2500000,
+    stock: 25,
     category: "Phụ kiện",
     color: "black",
     image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=800"
@@ -59,12 +68,14 @@ const products = [
     id: 8,
     name: "Kính mát cao cấp",
     price: 550000,
+    stock: 0,
     category: "Phụ kiện",
     color: "black",
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800"
   }
 ];
 
+let products = loadProducts();
 let cart = [];
 let selectedCategory = 'all';
 let selectedColor = 'all';
@@ -78,13 +89,31 @@ function money(x) {
   return x.toLocaleString('vi-VN') + "₫";
 }
 
+function getWarehouseInventory() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  return saved ? JSON.parse(saved) : null;
+}
+
+function saveWarehouseInventory(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadProducts() {
+  const saved = getWarehouseInventory();
+  if (saved) {
+    return saved;
+  }
+  saveWarehouseInventory(initialProducts);
+  return [...initialProducts];
+}
+
 function getFilteredProducts() {
   const query = searchInput.value.toLowerCase();
   return products.filter(product => {
     const matchesText = product.name.toLowerCase().includes(query) || product.category.toLowerCase().includes(query);
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     const matchesColor = selectedColor === 'all' || product.color === selectedColor;
-    return matchesText && matchesCategory && matchesColor;
+    return product.stock > 0 && matchesText && matchesCategory && matchesColor;
   });
 }
 
@@ -104,6 +133,7 @@ function renderProducts() {
         <div class="card-body">
           <h3>${product.name}</h3>
           <div class="price">${money(product.price)}</div>
+          <div class="stock-label">Còn: ${product.stock}</div>
           <button type="button" onclick="addToCart(${product.id})">Thêm vào giỏ</button>
         </div>
       </div>
@@ -129,9 +159,23 @@ function setColor(color) {
 
 function addToCart(id) {
   const product = products.find(p => p.id === id);
-  if (!product) return;
-  cart.push(product);
+  if (!product || product.stock <= 0) {
+    alert('Sản phẩm đã hết hàng.');
+    return;
+  }
+  cart.push({ ...product });
+  decrementStock(id, 1);
   renderCart();
+  renderProducts();
+}
+
+function decrementStock(id, quantity) {
+  const warehouse = getWarehouseInventory() || [];
+  const item = warehouse.find(p => p.id === id);
+  if (!item) return;
+  item.stock = Math.max(0, item.stock - quantity);
+  saveWarehouseInventory(warehouse);
+  products = warehouse;
 }
 
 function renderCart() {
