@@ -213,6 +213,36 @@ function hidePaymentOptions() {
   document.getElementById('paymentOptions').style.display = 'none';
 }
 
+function isLoggedIn() {
+  return localStorage.getItem('isLoggedIn') === 'true';
+}
+
+function handleAuthAction() {
+  if (isLoggedIn()) {
+    logout();
+  } else {
+    window.location.href = 'login.html';
+  }
+}
+
+function logout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userRole');
+  localStorage.removeItem('currentUser');
+  window.location.href = 'login.html';
+}
+
+function updateAuthButton() {
+  const authBtn = document.getElementById('authBtn');
+  if (!authBtn) return;
+
+  if (isLoggedIn()) {
+    authBtn.textContent = 'Đăng xuất';
+  } else {
+    authBtn.textContent = 'Đăng nhập';
+  }
+}
+
 function selectPayment(method) {
   const name = document.getElementById('customerName').value;
   const phone = document.getElementById('customerPhone').value;
@@ -235,4 +265,5 @@ function selectPayment(method) {
   hidePaymentOptions();
 }
 
+updateAuthButton();
 renderProducts();
