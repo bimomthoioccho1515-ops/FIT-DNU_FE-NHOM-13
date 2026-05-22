@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>FashionHub</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -20,45 +21,121 @@ body{
     color:#111;
 }
 
-/* HEADER */
-header{
+/* TOP HEADER */
+.top-header{
+    background:#f5f5f5;
+    padding:8px 50px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 50px;
-    border-bottom:1px solid #eee;
-    position:sticky;
-    top:0;
-    background:#fff;
-    z-index:1000;
+    font-size:13px;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:700;
-}
-
-nav{
+.top-left{
     display:flex;
-    gap:30px;
+    align-items:center;
+    gap:20px;
 }
 
-nav a{
+.top-left img{
+    width:22px;
+}
+
+.top-right{
+    display:flex;
+    gap:18px;
+}
+
+.top-right a{
     text-decoration:none;
     color:#111;
     font-weight:500;
 }
 
-.search-bar input{
-    padding:10px 15px;
-    border:1px solid #ddd;
+/* MAIN HEADER */
+header{
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #eee;
+}
+
+.main-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 50px;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#111;
+    font-weight:600;
+    font-size:17px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.search-box{
+    background:#f5f5f5;
     border-radius:30px;
-    width:220px;
+    padding:10px 18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.search-box input{
+    border:none;
+    background:transparent;
+    outline:none;
+    width:180px;
+    font-size:15px;
+}
+
+.icon{
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* DELIVERY BAR */
+.delivery-bar{
+    background:#f7f7f7;
+    text-align:center;
+    padding:15px;
+}
+
+.delivery-bar h3{
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.delivery-bar p{
+    font-size:14px;
+    text-decoration:underline;
+    font-weight:600;
+    cursor:pointer;
 }
 
 /* HERO */
 .hero{
-    height:80vh;
+    height:85vh;
     background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1400') center/cover;
     display:flex;
     align-items:center;
@@ -66,29 +143,29 @@ nav a{
     text-align:center;
     color:white;
 }
-
 .hero-content{
-    background:rgba(0,0,0,0.4);
-    padding:40px;
-    border-radius:10px;
+    background:rgba(0,0,0,0.45);
+    padding:45px;
+    border-radius:12px;
 }
 
 .hero h1{
-    font-size:60px;
+    font-size:65px;
     margin-bottom:15px;
 }
 
 .hero p{
-    font-size:20px;
-    margin-bottom:20px;
+    font-size:22px;
+    margin-bottom:25px;
 }
 
 .hero button{
-    padding:14px 35px;
+    padding:15px 40px;
     border:none;
-    background:#111;
-    color:white;
     border-radius:30px;
+    background:white;
+    color:black;
+    font-weight:600;
     cursor:pointer;
     font-size:16px;
 }
@@ -99,15 +176,15 @@ nav a{
 }
 
 .section-title{
-    font-size:35px;
-    margin-bottom:40px;
+    font-size:38px;
     font-weight:700;
+    margin-bottom:40px;
 }
 
 /* PRODUCTS */
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:30px;
 }
 
@@ -116,14 +193,14 @@ nav a{
 }
 
 .product-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
 }
 
 .product-card img{
     width:100%;
     height:320px;
     object-fit:cover;
-    border-radius:8px;
+    border-radius:10px;
     background:#f5f5f5;
 }
 
@@ -132,22 +209,22 @@ nav a{
 }
 
 .product-info h3{
-    font-size:18px;
+    font-size:20px;
     margin-bottom:10px;
 }
 
 .price{
-    color:#111;
     font-weight:700;
+    font-size:18px;
 }
 
 .buy-btn{
-    margin-top:12px;
-    padding:10px 20px;
+    margin-top:15px;
+    padding:11px 24px;
     border:none;
     background:#111;
     color:white;
-    border-radius:20px;
+    border-radius:25px;
     cursor:pointer;
 }
 
@@ -161,7 +238,7 @@ nav a{
 .category-card{
     position:relative;
     overflow:hidden;
-    border-radius:10px;
+    border-radius:12px;
 }
 
 .category-card img{
@@ -183,21 +260,21 @@ nav a{
     align-items:flex-end;
     padding:25px;
     color:white;
-    font-size:24px;
+    font-size:28px;
     font-weight:600;
 }
 
 /* FOOTER */
 footer{
     background:#f7f7f7;
-    padding:50px;
+    padding:60px 50px;
     margin-top:60px;
 }
 
 .footer-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:30px;
+    gap:35px;
 }
 
 footer h3{
@@ -218,50 +295,104 @@ footer p{
 /* MOBILE */
 @media(max-width:768px){
 
-header{
+.top-header{
+    padding:10px 20px;
     flex-direction:column;
-    gap:15px;
+    gap:10px;
+}
+
+.main-header{
+    flex-direction:column;
+    gap:20px;
     padding:20px;
 }
 
+nav{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
 .hero h1{
-    font-size:38px;
+    font-size:42px;
+}
+
+.hero p{
+    font-size:18px;
 }
 
 .section{
     padding:50px 20px;
 }
 
+.search-box input{
+    width:120px;
 }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- TOP HEADER -->
+<div class="top-header">
+<div class="top-right">
+<a href="#">Find a Store</a>
+<a href="#">Help</a>
+<a href="#">Join Us</a>
+<a href="#">Sign In</a>
+</div>
+
+</div>
+
+<!-- MAIN HEADER -->
 <header>
+
+<div class="main-header">
 
 <div class="logo">FashionHub</div>
 
 <nav>
-<a href="#">Trang chủ</a>
-<a href="#">Sản phẩm</a>
-<a href="#">Bộ sưu tập</a>
-<a href="#">Liên hệ</a>
+<a href="#">New & Featured</a>
+<a href="#">Men</a>
+<a href="#">Women</a>
+<a href="#">Kids</a>
+<a href="#">Sale</a>
 </nav>
 
-<div class="search-bar">
-<input type="text" placeholder="Tìm kiếm...">
+<div class="header-right">
+
+<div class="search-box">
+🔍
+<input type="text" placeholder="Search">
+</div>
+
+<div class="icon">♡</div>
+<div class="icon">👜</div>
+
+</div>
+
+</div>
+
+<!-- DELIVERY -->
+<div class="delivery-bar">
+<h3>Free Standard Delivery & 30-Day Free Returns</h3>
+<p>Join Now View Details</p>
 </div>
 
 </header>
 
 <!-- HERO -->
 <section class="hero">
+
 <div class="hero-content">
 <h1>NEW COLLECTION 2026</h1>
 <p>Phong cách thời trang hiện đại và đẳng cấp</p>
 <button>Mua ngay</button>
 </div>
+
 </section>
 
 <!-- PRODUCTS -->
@@ -273,29 +404,37 @@ header{
 
 <div class="product-card">
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000">
+
 <div class="product-info">
 <h3>Nike Air Max</h3>
 <p class="price">4.200.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
+
 </div>
 
 <div class="product-card">
+
 <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000">
+
 <div class="product-info">
 <h3>Jordan Retro</h3>
 <p class="price">5.500.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
+
 </div>
 
 <div class="product-card">
+
 <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000">
+
 <div class="product-info">
 <h3>Fashion Sneaker</h3>
 <p class="price">3.800.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
+
 </div>
 
 </div>
