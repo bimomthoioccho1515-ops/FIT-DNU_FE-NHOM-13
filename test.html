@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FashionHub</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,47 +17,39 @@
 }
 
 body{
-    background:#fff;
+    background:white;
     color:#111;
 }
 
 /* TOP HEADER */
+
 .top-header{
     background:#f5f5f5;
-    padding:8px 50px;
+    padding:10px 50px;
     display:flex;
-    justify-content:space-between;
+    justify-content:flex-end;
     align-items:center;
-    font-size:13px;
-}
-
-.top-left{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.top-left img{
-    width:22px;
 }
 
 .top-right{
     display:flex;
-    gap:18px;
+    gap:20px;
 }
 
 .top-right a{
     text-decoration:none;
     color:#111;
+    font-size:13px;
     font-weight:500;
 }
 
 /* MAIN HEADER */
+
 header{
-    background:white;
     position:sticky;
     top:0;
     z-index:1000;
+    background:white;
     border-bottom:1px solid #eee;
 }
 
@@ -65,13 +57,12 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 50px;
+    padding:20px 50px;
 }
 
 .logo{
-    font-size:38px;
-    font-weight:700;
-    cursor:pointer;
+    font-size:34px;
+    font-weight:800;
 }
 
 nav{
@@ -89,7 +80,7 @@ nav a{
 .header-right{
     display:flex;
     align-items:center;
-    gap:20px;
+    gap:18px;
 }
 
 .search-box{
@@ -103,9 +94,9 @@ nav a{
 
 .search-box input{
     border:none;
-    background:transparent;
     outline:none;
-    width:180px;
+    background:transparent;
+    width:170px;
     font-size:15px;
 }
 
@@ -115,6 +106,7 @@ nav a{
 }
 
 /* DELIVERY BAR */
+
 .delivery-bar{
     background:#f7f7f7;
     text-align:center;
@@ -134,6 +126,7 @@ nav a{
 }
 
 /* HERO */
+
 .hero{
     height:85vh;
     background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1400') center/cover;
@@ -143,6 +136,7 @@ nav a{
     text-align:center;
     color:white;
 }
+
 .hero-content{
     background:rgba(0,0,0,0.45);
     padding:45px;
@@ -171,6 +165,7 @@ nav a{
 }
 
 /* SECTION */
+
 .section{
     padding:70px 50px;
 }
@@ -182,6 +177,7 @@ nav a{
 }
 
 /* PRODUCTS */
+
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -201,7 +197,6 @@ nav a{
     height:320px;
     object-fit:cover;
     border-radius:10px;
-    background:#f5f5f5;
 }
 
 .product-info{
@@ -229,6 +224,7 @@ nav a{
 }
 
 /* CATEGORY */
+
 .categories{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -264,7 +260,59 @@ nav a{
     font-weight:600;
 }
 
+/* SPOTLIGHT */
+
+.spotlight-section{
+    padding:90px 50px;
+    background:#f7f7f7;
+    text-align:center;
+}
+
+.spotlight-section h2{
+    font-size:75px;
+    font-weight:900;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+.spotlight-section p{
+    font-size:14px;
+    margin-bottom:70px;
+}
+
+.spotlight-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:45px;
+    align-items:center;
+}
+
+.spot-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.spot-item:hover{
+    transform:translateY(-6px);
+}
+
+.spot-item img{
+    width:85px;
+    height:85px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
+
+.spot-item span{
+    font-size:13px;
+    font-weight:500;
+}
+
 /* FOOTER */
+
 footer{
     background:#f7f7f7;
     padding:60px 50px;
@@ -293,12 +341,11 @@ footer p{
 }
 
 /* MOBILE */
+
 @media(max-width:768px){
 
 .top-header{
     padding:10px 20px;
-    flex-direction:column;
-    gap:10px;
 }
 
 .main-header{
@@ -308,9 +355,9 @@ footer p{
 }
 
 nav{
-    gap:18px;
     flex-wrap:wrap;
     justify-content:center;
+    gap:20px;
 }
 
 .hero h1{
@@ -329,6 +376,10 @@ nav{
     width:120px;
 }
 
+.spotlight-section h2{
+    font-size:45px;
+}
+
 }
 
 </style>
@@ -337,7 +388,9 @@ nav{
 <body>
 
 <!-- TOP HEADER -->
+
 <div class="top-header">
+
 <div class="top-right">
 <a href="#">Find a Store</a>
 <a href="#">Help</a>
@@ -347,7 +400,8 @@ nav{
 
 </div>
 
-<!-- MAIN HEADER -->
+<!-- HEADER -->
+
 <header>
 
 <div class="main-header">
@@ -376,7 +430,6 @@ nav{
 
 </div>
 
-<!-- DELIVERY -->
 <div class="delivery-bar">
 <h3>Free Standard Delivery & 30-Day Free Returns</h3>
 <p>Join Now View Details</p>
@@ -385,6 +438,7 @@ nav{
 </header>
 
 <!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-content">
@@ -396,6 +450,7 @@ nav{
 </section>
 
 <!-- PRODUCTS -->
+
 <section class="section">
 
 <h2 class="section-title">Sản phẩm nổi bật</h2>
@@ -410,11 +465,9 @@ nav{
 <p class="price">4.200.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
-
 </div>
 
 <div class="product-card">
-
 <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000">
 
 <div class="product-info">
@@ -422,11 +475,9 @@ nav{
 <p class="price">5.500.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
-
 </div>
 
 <div class="product-card">
-
 <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000">
 
 <div class="product-info">
@@ -434,7 +485,6 @@ nav{
 <p class="price">3.800.000₫</p>
 <button class="buy-btn">Mua ngay</button>
 </div>
-
 </div>
 
 </div>
@@ -442,6 +492,7 @@ nav{
 </section>
 
 <!-- CATEGORY -->
+
 <section class="section">
 
 <h2 class="section-title">Shop by Sport</h2>
@@ -467,7 +518,104 @@ nav{
 
 </section>
 
+<!-- SPOTLIGHT -->
+
+<section class="spotlight-section">
+
+<h2>SPOTLIGHT</h2>
+
+<p>
+Classic silhouettes and cutting-edge innovation to build your game from the ground up.
+</p>
+
+<div class="spotlight-grid">
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300">
+<span>Air Jordan 1 Low</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=300">
+<span>Dunk</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=300">
+<span>Air Force 1</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=300">
+<span>Vomero Plus</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=300">
+<span>Pegasus Premium</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=300">
+<span>24.7 Collection</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300">
+<span>Tennis Apparel</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=300">
+<span>Vaporfly</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=300">
+<span>Sabrina</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=300">
+<span>Cortez</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=300">
+<span>Metcon 10</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=300">
+<span>NBA Jerseys</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=300">
+<span>Shox</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=300">
+<span>Air Max DN</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=300">
+<span>Zoomfly 6</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300">
+<span>Graphic Tees</span>
+</div>
+
+</div>
+
+</section>
+
 <!-- FOOTER -->
+
 <footer>
 
 <div class="footer-grid">
