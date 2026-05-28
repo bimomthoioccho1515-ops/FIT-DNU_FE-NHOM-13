@@ -170,3 +170,148 @@ body{
 
     font-weight:700;
 }
+
+/* CHANGE */
+
+.change{
+    margin-top:10px;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+/* CHARTS */
+
+.charts-section{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(400px,1fr));
+
+    gap:22px;
+
+    margin-top:30px;
+}
+
+.chart-container{
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* TABLE */
+
+.inventory-section,
+.suppliers-section{
+    margin-top:30px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+}
+
+.section-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.add-btn{
+    background:#111;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+}
+
+.inventory-table,
+.suppliers-table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+.inventory-table th,
+.inventory-table td,
+.suppliers-table th,
+.suppliers-table td{
+    padding:16px;
+
+    border-bottom:1px solid #eee;
+
+    text-align:left;
+}
+
+.inventory-table th,
+.suppliers-table th{
+    color:#777;
+
+    font-size:14px;
+}
+
+/* STATUS */
+
+.status-badge{
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.status-in-stock{
+    background:#e8f8ee;
+
+    color:#1a7f37;
+}
+
+.status-low-stock{
+    background:#fff4d6;
+
+    color:#b58105;
+}
+
+.status-out-of-stock{
+    background:#ffe5e5;
+
+    color:#d62828;
+}
+
+/* LOGOUT */
+
+.logout-btn{
+    margin-top:20px !important;
+
+    background:#1f1f1f;
+
+    color:#ff4d4d !important;
+}
+
+.logout-btn:hover{
+    background:#ff4d4d !important;
+
+    color:#fff !important;
+}

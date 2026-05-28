@@ -1,38 +1,140 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Đăng ký</title>
-    <link rel="stylesheet" href="register.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Register
+    </title>
+
+    <link rel="stylesheet"
+          href="./css/register.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
 </head>
-<body class="body">
 
-<form id="registerForm" class="form">
-    <h2><i class="fas fa-user-plus"></i> Đăng ký tài khoản</h2>
-    <div class="div">
-        <label class="label"><i class="fas fa-user"></i> Tài khoản:</label>
-        <input type="text" id="username" class="input" placeholder="Nhập tài khoản" required>
-    </div>
-    <div class="div">
-        <label class="label"><i class="fas fa-envelope"></i> Email:</label>
-        <input type="email" id="email" class="input" placeholder="Nhập email" required>
-    </div>
-    <div class="div">
-        <label class="label"><i class="fas fa-lock"></i> Mật khẩu:</label>
-        <input type="password" id="password" class="input" placeholder="Nhập mật khẩu" required>
-    </div>
-    <div class="div">
-        <label class="label"><i class="fas fa-lock"></i> Xác nhận mật khẩu:</label>
-        <input type="password" id="confirmPassword" class="input" placeholder="Xác nhận mật khẩu" required>
-    </div>
-    <button type="submit" class="button"><i class="fas fa-user-plus"></i> Đăng ký</button>
-    <p id="message"></p>
-    <div class="login-link">
-        <a href="login.html" class="login"><i class="fas fa-sign-in-alt"></i> Đã có tài khoản? Đăng nhập</a>
-    </div>
-</form>
+<body>
 
-<script src="register.js"></script>
+<div class="register-container">
+
+    <!-- LEFT IMAGE -->
+
+    <div class="register-banner">
+
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200"
+             alt="Fashion">
+
+    </div>
+
+    <!-- RIGHT FORM -->
+
+    <div class="register-form-wrapper">
+
+        <div class="brand-logo">
+
+            FASHIONHUB
+
+        </div>
+
+        <h1>
+            Create Account
+        </h1>
+
+        <p class="subtitle">
+            Join the streetwear movement.
+        </p>
+
+        <form id="registerForm"
+              class="form">
+
+            <div class="input-group">
+
+                <label>
+                    Username
+                </label>
+
+                <input type="text"
+                       id="username"
+                       placeholder="Enter username"
+                       required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input type="email"
+                       id="email"
+                       placeholder="Enter email"
+                       required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input type="password"
+                       id="password"
+                       placeholder="Enter password"
+                       required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+                    Confirm Password
+                </label>
+
+                <input type="password"
+                       id="confirmPassword"
+                       placeholder="Confirm password"
+                       required>
+
+            </div>
+
+            <button type="submit"
+                    class="register-btn">
+
+                CREATE ACCOUNT
+
+            </button>
+
+            <p id="message"></p>
+
+        </form>
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="./java/register.js"></script>
+
 </body>
 </html>

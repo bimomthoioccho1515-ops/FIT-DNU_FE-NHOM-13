@@ -4,18 +4,7 @@
   box-sizing:border-box;
   font-family:Poppins,sans-serif;
 }
-/* HEADER */
 
-/* HEADER */
-
-/* RESET */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
 
 /* TOP NAVBAR */
 .top-navbar{
@@ -716,7 +705,7 @@ nav a:hover,
 }
 
 .price{
-  color:#ff4081;
+  color:#000000;
   font-size:22px;
   font-weight:bold;
   margin:10px 0;
@@ -742,7 +731,7 @@ button{
 }
 
 button:hover{
-  background:#ff4081;
+  background:#8f8f8f;
 }
 
 .empty-state{
@@ -801,7 +790,7 @@ button:hover{
 
 .color-circle.active{
   transform:scale(1.1);
-  border-color:#ff4081;
+  border-color:#555555;
 }
 
 .color-circle[title="Tất cả"]{

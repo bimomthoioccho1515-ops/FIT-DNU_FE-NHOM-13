@@ -127,7 +127,7 @@ function initializeCharts() {
 
 function initializeTables() {
     // Inventory Table
-    const inventoryTable = document.getElementById('inventoryTable');
+    const inventoryTable = document.querySelector('#inventoryTable tbody');
     inventoryData.forEach(item => {
         const row = inventoryTable.insertRow();
         row.insertCell(0).textContent = item.name;
@@ -141,7 +141,7 @@ function initializeTables() {
     });
 
     // Suppliers Table
-    const suppliersTable = document.getElementById('suppliersTable');
+    const suppliersTable = document.querySelector('#suppliersTable tbody');
     suppliersData.forEach(supplier => {
         const row = suppliersTable.insertRow();
         row.insertCell(0).textContent = supplier.name;
@@ -154,11 +154,39 @@ function formatCurrency(amount) {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
 }
 
-function getStatusText(status) {
-    switch(status) {
-        case 'in-stock': return 'Còn hàng';
-        case 'low-stock': return 'Sắp hết';
-        case 'out-of-stock': return 'Hết hàng';
-        default: return 'Không xác định';
+function getStatusText(status){
+
+    switch(status){
+
+        case 'in-stock':
+            return 'Còn hàng';
+
+        case 'low-stock':
+            return 'Sắp hết';
+
+        case 'out-of-stock':
+            return 'Hết hàng';
+
+        default:
+            return 'Không xác định';
     }
+
 }
+
+/* LOGOUT */
+
+
+/* LOGOUT */
+
+function logout(){
+
+    localStorage.removeItem('isLoggedIn');
+
+    localStorage.removeItem('userRole');
+
+    window.location.href = 'login.html';
+
+}
+
+
+
