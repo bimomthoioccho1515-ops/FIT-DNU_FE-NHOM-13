@@ -43,10 +43,10 @@
       <span>♡</span>
     </button>
 </button>
-
-
-    <button class="header-icon">🛒</button>
-
+   <button class="header-icon"
+        onclick="window.location.href='cart.html'">
+    🛒
+</button>
   </div>
 
 </header>
@@ -55,38 +55,42 @@
   <p style="font-family: 'akira', sans-serif;">READY FOR THE SUMMER</p>
   <button class="hero-btn" onclick="setCategory('all')">SHOP NOW</button>
   </div>
-  <section class="features">
-    <div class="feature-card" onclick="setCategory('Quần áo')">
-      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800" alt="Quần áo">
-      <div class="feature-overlay">
-        <span>Quần áo</span>
-        <p>Phong cách oldschool
-        </p>
-      </div>
-    </div>
-    <div class="feature-card" onclick="setCategory('Giày')">
-      <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-liv3ijb0k24y18" alt="Giày">
-      <div class="feature-overlay">
-        <span>Giày</span>
-        <p>Step up style</p>
-      </div>
-    </div>
-    <div class="feature-card" onclick="setCategory('Túi xách')">
-      <img src="https://kat.vn/wp-content/uploads/2024/10/thuong-hieu-tui-xach-nu-25.jpg" alt="Túi xách">
-      <div class="feature-overlay">
-        <span>Túi xách</span>
-        <p>Thiết kế sang trọng</p>
-      </div>
-    </div>
-    <div class="feature-card" onclick="setCategory('Phụ kiện')">
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800" alt="Phụ kiện">
-      <div class="feature-overlay">
-        <span>Phụ kiện</span>
-        <p>Tinh tế từng chi tiết</p>
-      </div>
-    </div>
-  </section>
+  <h1 style="font-family:'lemonmilk';" class="featured">Featured</h1>
+  <section class="featured-grid">
 
+    <div class="featured-card">
+
+        <img src="./stuff/featured1.jpg" alt="Featured 1">
+
+        <div class="featured-overlay">
+
+            <h2>NEW SEASON</h2>
+
+            <button>
+                SHOP NOW
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="featured-card">
+
+        <img src="./stuff/featured2.avif" alt="Featured 2">
+
+        <div class="featured-overlay">
+
+            <h2>URBAN STYLE</h2>
+
+            <button>
+                EXPLORE
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
   <section class="products">
     <div class="product-controls">
       <div class="categories">
@@ -110,43 +114,5 @@
     <button class="color-circle" data-color="pink" onclick="setColor('pink')" style="background:#ff5a9b" title="Hồng"></button>
   </div>
 
-  <section class="cart">
-    <h2>🛒 Giỏ hàng</h2>
-    <div id="cartItems"></div>
-    <div class="total">
-      Tổng tiền:
-      <span id="total">0₫</span>
-    </div>
-    <button class="checkout-btn" onclick="showPaymentOptions()">Thanh toán</button>
-
-    <div id="paymentOptions" class="payment-modal" style="display:none;">
-      <div>
-        <h3>Thông tin khách hàng</h3>
-        <form id="customerForm">
-          <input type="text" id="customerName" placeholder="Họ và tên" required>
-          <input type="tel" id="customerPhone" placeholder="Số điện thoại" required>
-          <input type="text" id="customerAddress" placeholder="Địa chỉ giao hàng" required>
-        </form>
-        <h3>Chọn phương thức thanh toán</h3>
-        <div class="payment-methods">
-          <button class="payment-method" onclick="selectPayment('cod')">
-            <span>🚚</span>
-            <div>
-              <strong>Ship COD</strong>
-              <p>Thanh toán khi nhận hàng</p>
-            </div>
-          </button>
-          <button class="payment-method" onclick="selectPayment('bank')">
-            <span>🏦</span>
-            <div>
-              <strong>Chuyển khoản</strong>
-              <p>Ngân hàng Vietcombank</p>
-            </div>
-          </button>
-        </div>
-        <button class="close-modal" onclick="hidePaymentOptions()">Đóng</button>
-      </div>
-    </div>
-  </section>
   </body>
   </html>
