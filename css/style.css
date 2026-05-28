@@ -18,37 +18,43 @@
 }
 
 /* TOP NAVBAR */
-
 .top-navbar{
-    height:38px;
-
-    background:#f5f5f5;
+    height:36px;
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:flex-end;
+
+    gap:12px;
 
     padding:0 40px;
+
+    background:#f5f5f5;
 
     border-bottom:1px solid #e5e5e5;
 }
 
 .top-navbar a{
+    display:inline-block;
+
     text-decoration:none;
     color:#111;
 
     font-size:13px;
     font-weight:500;
 
-    margin-right:18px;
-
     transition:0.3s;
 }
 
 .top-navbar a:hover{
-    color:#777;
+    opacity:0.6;
+    transform:translateY(-1px);
 }
 
+.top-navbar span{
+    color:#999;
+    font-size:12px;
+}
 /* HEADER */
 
 .main-header{
@@ -84,6 +90,7 @@
     display:flex;
     align-items:center;
     gap:14px;
+
 }
 
 /* SEARCH */
@@ -101,6 +108,7 @@
     outline:none;
 
     font-size:13px;
+    magin-right:20px;
 }
 
 /* ICONS */
@@ -109,11 +117,15 @@
     border:none;
     background:none;
 
-    font-size:20px;
+   transform:scale(1.12);
 
     cursor:pointer;
 
     transition:0.3s;
+     color:#111;
+     width:40px;
+     height:40px;
+     scale:112%;
 }
 
 .header-icon:hover{
@@ -181,7 +193,7 @@
 }
 
 .login-btn:hover{
-    background:#ff4d6d;
+    background:#5a5a5a;
 }
 
 /* DROPDOWN */
@@ -228,7 +240,7 @@
 
 .dropdown-content button:hover{
     background:#f5f5f5;
-    color:#ff4d6d;
+    color:#595959;
 }
 
 /* SEARCH */
@@ -304,7 +316,7 @@
 }
 
 .dropdown-content button:hover{
-    color:#ff4d6d;
+    color:#6b6b6b;
 }
 .hero{
   background-image: url('../stuff/banner.gif');
@@ -374,7 +386,7 @@ header {
 .logo{
   font-size:30px;
   font-weight:bold;
-  color:#ff4081;
+  color:#000000;
 }
 
 .navbar{
