@@ -4,283 +4,268 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FashionHub</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="web.js" defer></script>
+<link rel="stylesheet" href="test.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- TOP HEADER -->
+
 <div class="top-header">
+
 <div class="top-right">
+<a href="#">Find a Store</a>
 <a href="#">Help</a>
 <a href="#">Join Us</a>
+<a href="#">Sign In</a>
+</div>
 
 </div>
-</div>
-
-<header>
-
-<div class="main-header">
-
-<div class="logo">FashionHub</div>
-
 <nav>
-<a onclick="setCategory('all')">All</a>
-<a onclick="setCategory('Men')">Men</a>
-<a onclick="setCategory('Women')">Women</a>
-<a onclick="setCategory('Shoes')">Shoes</a>
-<a onclick="setCategory('Accessories')">Accessories</a>
+<a href="#">New & Featured</a>
+<a href="#">Men</a>
+<a href="#">Women</a>
+<a href="#">Kids</a>
+<a href="#">Sale</a>
 </nav>
 
+
+<header>
+<div class="main-header">
+<div class="logo">FashionHub</div>
+
+
 <div class="header-right">
+
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search products...">
-</div>
+🔍
+<input type="text" placeholder="Search">
 </div>
 
+<div class="icon">♡</div>
+<div class="icon">👜</div>
+
+</div>
+
+</div>
+
+<div class="delivery-bar">
+<h3>Free Standard Delivery & 30-Day Free Returns</h3>
+<p>Join Now View Details</p>
 </div>
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
+
 <div class="hero-content">
 <h1>NEW COLLECTION 2026</h1>
-<p>Phong cách thời trang hiện đại</p>
+<p>Phong cách thời trang hiện đại và đẳng cấp</p>
+<button>Mua ngay</button>
 </div>
+
 </section>
+
+<!-- PRODUCTS -->
 
 <section class="section">
 
 <h2 class="section-title">Sản phẩm nổi bật</h2>
 
-<div class="filter-bar">
-<button onclick="setCategory('all')" class="active">Tất cả</button>
-<button onclick="setCategory('Men')">Men</button>
-<button onclick="setCategory('Women')">Women</button>
-<button onclick="setCategory('Shoes')">Shoes</button>
-</div>
-
-<div class="products" id="productGrid"></div>
-
-</section>
-
-<div class="color-menu">
-<span>Lọc màu:</span>
-
-<button class="color-circle" style="background:black" onclick="setColor('black')"></button>
-<button class="color-circle" style="background:white" onclick="setColor('white')"></button>
-<button class="color-circle" style="background:blue" onclick="setColor('blue')"></button>
-<button class="color-circle" style="background:pink" onclick="setColor('pink')"></button>
-
-</div>
-
-<section class="cart">
-
-<h2>🛒 Giỏ hàng</h2>
-
-<div id="cartItems"></div>
-
-<div class="total">
-Tổng tiền:
-<span id="total">0₫</span>
-</div>
-
-<button class="checkout-btn" onclick="showPayment()">
-Thanh toán
-</button>
-
-</section>
-
-<div class="payment-modal" id="paymentModal" style="display:none;">
-
-<div class="payment-content">
-
-<h3>Thông tin khách hàng</h3>
-
-<input type="text" placeholder="Họ tên">
-<input type="text" placeholder="Số điện thoại">
-<input type="text" placeholder="Địa chỉ">
-
-<button class="payment-method">
-🚚 Thanh toán COD
-</button>
-
-<button class="payment-method">
-🏦 Chuyển khoản
-</button>
-
-<button class="close-btn" onclick="hidePayment()">
-Đóng
-</button>
-
-</div>
-
-</div>
-
-<script>
-
-const products = [
-
-{
-name:"Nike Air Max",
-price:4200000,
-category:"Shoes",
-color:"black",
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000"
-},
-
-{
-name:"Jordan Retro",
-price:5500000,
-category:"Shoes",
-color:"white",
-image:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000"
-},
-
-{
-name:"Pink Hoodie",
-price:1200000,
-category:"Women",
-color:"pink",
-image:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000"
-}
-
-];
-
-let currentCategory = "all";
-let currentColor = "all";
-
-const cart = [];
-
-function renderProducts(){
-
-const grid = document.getElementById("productGrid");
-
-const search = document.getElementById("searchInput").value.toLowerCase();
-
-grid.innerHTML = "";
-
-const filtered = products.filter(p => {
-
-const categoryMatch =
-currentCategory === "all" ||
-p.category === currentCategory;
-
-const colorMatch =
-currentColor === "all" ||
-p.color === currentColor;
-
-const searchMatch =
-p.name.toLowerCase().includes(search);
-
-return categoryMatch && colorMatch && searchMatch;
-
-});
-
-filtered.forEach(product => {
-
-grid.innerHTML += `
+<div class="products">
 
 <div class="product-card">
-
-<img src="${product.image}">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000">
 
 <div class="product-info">
+<h3>Nike Air Max</h3>
+<p class="price">4.200.000₫</p>
+<button class="buy-btn">Mua ngay</button>
+</div>
+</div>
 
-<h3>${product.name}</h3>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000">
 
-<p class="price">
-${product.price.toLocaleString()}₫
+<div class="product-info">
+<h3>Jordan Retro</h3>
+<p class="price">5.500.000₫</p>
+<button class="buy-btn">Mua ngay</button>
+</div>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000">
+
+<div class="product-info">
+<h3>Fashion Sneaker</h3>
+<p class="price">3.800.000₫</p>
+<button class="buy-btn">Mua ngay</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORY -->
+
+<section class="section">
+
+<h2 class="section-title">Shop by Sport</h2>
+
+<div class="categories">
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000">
+<div class="overlay">Running</div>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1000">
+<div class="overlay">Football</div>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1000">
+<div class="overlay">Basketball</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- SPOTLIGHT -->
+
+<section class="spotlight-section">
+
+<h2>SPOTLIGHT</h2>
+
+<p>
+Classic silhouettes and cutting-edge innovation to build your game from the ground up.
 </p>
 
-<button class="buy-btn"
-onclick='addToCart(${JSON.stringify(product)})'>
-Mua ngay
-</button>
+<div class="spotlight-grid">
 
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300">
+<span>Air Jordan 1 Low</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=300">
+<span>Dunk</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=300">
+<span>Air Force 1</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=300">
+<span>Vomero Plus</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=300">
+<span>Pegasus Premium</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=300">
+<span>24.7 Collection</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300">
+<span>Tennis Apparel</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=300">
+<span>Vaporfly</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=300">
+<span>Sabrina</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=300">
+<span>Cortez</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=300">
+<span>Metcon 10</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=300">
+<span>NBA Jerseys</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=300">
+<span>Shox</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=300">
+<span>Air Max DN</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=300">
+<span>Zoomfly 6</span>
+</div>
+
+<div class="spot-item">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300">
+<span>Graphic Tees</span>
 </div>
 
 </div>
 
-`;
+</section>
 
-});
+<!-- FOOTER -->
 
-}
+<footer>
 
-function setCategory(category){
+<div class="footer-grid">
 
-currentCategory = category;
-renderProducts();
-
-}
-
-function setColor(color){
-
-currentColor = color;
-renderProducts();
-
-}
-
-document
-.getElementById("searchInput")
-.addEventListener("input", renderProducts);
-
-function addToCart(product){
-
-cart.push(product);
-
-renderCart();
-
-}
-
-function renderCart(){
-
-const cartItems =
-document.getElementById("cartItems");
-
-cartItems.innerHTML = "";
-
-let total = 0;
-
-cart.forEach(item => {
-
-total += item.price;
-
-cartItems.innerHTML += `
-
-<div class="cart-item">
-<span>${item.name}</span>
-<span>${item.price.toLocaleString()}₫</span>
+<div>
+<h3>FashionHub</h3>
+<p>Xu hướng thời trang mới nhất 2026</p>
 </div>
 
-`;
+<div>
+<h3>Liên hệ</h3>
+<p>📞 0326593549</p>
+<p>📧 maitruongvu2007@gmail.com</p>
+</div>
 
-});
+<div>
+<h3>Hỗ trợ</h3>
+<p>Chính sách đổi trả</p>
+<p>Vận chuyển</p>
+<p>Bảo mật</p>
+</div>
 
-document.getElementById("total")
-.innerText = total.toLocaleString() + "₫";
+</div>
 
-}
+<div class="copyright">
+© 2026 FashionHub. All rights reserved.
+</div>
 
-function showPayment(){
-
-document.getElementById("paymentModal")
-.style.display = "flex";
-
-}
-
-function hidePayment(){
-
-document.getElementById("paymentModal")
-.style.display = "none";
-
-}
-
-renderProducts();
-
-</script>
+</footer>
 
 </body>
 </html>
