@@ -92,6 +92,30 @@
     gap:14px;
 
 }
+/* INFO BAR */
+
+.info-bar{
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:13px;
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.info-bar p{
+    opacity:0.92;
+}
 
 /* SEARCH */
 
