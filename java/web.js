@@ -1,161 +1,354 @@
-const STORAGE_KEY = "warehouseInventory";
+const API_URL =
+"https://6a1a846abc2f94475492525f.mockapi.io/products";
+
 const CART_KEY = "cart";
 
-/* ================= DATA ================= */
+let products = [];
 
-const initialProducts = [
-  { id: 1, name: "Áo sơ mi trắng", price: 450000, stock: 150, category: "Quần áo", color: "white", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800" },
-  { id: 2, name: "Giày thể thao", price: 1200000, stock: 45, category: "Giày", color: "black", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800" },
-  { id: 3, name: "Áo hoodie xám", price: 650000, stock: 70, category: "Quần áo", color: "black", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800" },
-  { id: 4, name: "Áo khoác jean", price: 890000, stock: 120, category: "Quần áo", color: "blue", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800" },
-  { id: 5, name: "Giày sneaker trắng", price: 1450000, stock: 20, category: "Giày", color: "white", image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800" },
-  { id: 6, name: "Túi xách nữ", price: 980000, stock: 80, category: "Túi xách", color: "pink", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800" },
-  { id: 7, name: "Đồng hồ thời trang", price: 2500000, stock: 25, category: "Phụ kiện", color: "black", image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=800" },
-  { id: 8, name: "Kính mát cao cấp", price: 550000, stock: 0, category: "Phụ kiện", color: "black", image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800" }
-];
-
-/* ================= STATE ================= */
-
-let products = loadProducts();
 let selectedCategory = "all";
 let selectedColor = "all";
 
-/* ================= STORAGE ================= */
+/* LOAD PRODUCT */
 
-function loadProducts() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) return JSON.parse(saved);
+async function loadProducts() {
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(initialProducts));
-  return [...initialProducts];
+try{
+
+const res = await fetch(API_URL);
+
+products = await res.json();
+
+renderProducts();
+
+}
+catch(err){
+
+console.log(err);
+
+document.getElementById("productGrid").innerHTML =
+"<h2>Không tải được dữ liệu</h2>";
+
 }
 
-function saveProducts() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
 }
 
-/* ================= CART ================= */
+/* CART */
 
-function getCart() {
-  return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+function getCart(){
+
+return JSON.parse(
+localStorage.getItem(CART_KEY)
+)||[];
+
 }
 
-function saveCart(cart) {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+function saveCart(cart){
+
+localStorage.setItem(
+CART_KEY,
+JSON.stringify(cart)
+);
+
 }
 
-/* ================= ADD TO CART (COUNT FIX) ================= */
+/* ADD */
 
-function addToCart(id) {
-  const product = products.find(p => p.id === id);
-  if (!product || product.stock <= 0) return alert("Hết hàng");
+async function addToCart(id){
 
-  let cart = getCart();
+const product =
+products.find(
+p=>Number(p.id)===Number(id)
+);
 
-  let item = cart.find(p => p.id === id);
+if(!product){
 
-  if (item) {
-    item.count += 1;
-  } else {
-    cart.push({ ...product, count: 1 });
-  }
+alert("Không tìm thấy");
 
-  saveCart(cart);
+return;
 
-  product.stock -= 1;
-  saveProducts();
-
-  renderProducts();
-  updateCartCount();
 }
 
-/* ================= COUNT ================= */
+if(product.stock<=0){
 
-function updateCartCount() {
-  const el = document.getElementById("cartCount");
-  if (!el) return;
+alert("Hết hàng");
 
-  const cart = getCart();
+return;
 
-  const totalCount = cart.reduce((sum, item) => sum + item.count, 0);
-
-  el.innerText = totalCount;
 }
 
-/* ================= RENDER ================= */
+let cart=getCart();
 
-function renderProducts() {
-  const grid = document.getElementById("productGrid");
-  const search = document.getElementById("searchInput");
+const item=
+cart.find(
+i=>Number(i.id)===Number(id)
+);
 
-  const q = search ? search.value.toLowerCase() : "";
+if(item){
 
-  const list = products.filter(p =>
-    p.stock > 0 &&
-    (p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)) &&
-    (selectedCategory === "all" || p.category === selectedCategory) &&
-    (selectedColor === "all" || p.color === selectedColor)
-  );
+item.count++;
 
-  grid.innerHTML = list.map(p => `
-    <div class="card">
-      <img src="${p.image}">
-      <div class="card-body">
-        <h3>${p.name}</h3>
-        <div>${p.price.toLocaleString("vi-VN")}₫</div>
-        <div>Còn: ${p.stock}</div>
-        <button onclick="addToCart(${p.id})">Thêm vào giỏ</button>
-      </div>
-    </div>
-  `).join("");
+}else{
+
+cart.push({
+...product,
+count:1
+});
+
+}
+
+saveCart(cart);
+
+/* update stock */
+
+product.stock--;
+
+const newSold =
+(product.sold || 0) + 1;
+
+product.sold =
+newSold;
+
+try{
+
+await fetch(
+
+`${API_URL}/${id}`,
+
+{
+
+method:"PUT",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+stock:product.stock,
+
+sold:newSold
+
+})
+
+}
+
+);
+
+}
+catch{
+
+alert(
+"Lỗi cập nhật kho"
+);
+
+}
+
+}
+
+/* COUNT */
+
+function updateCartCount(){
+
+const cart=getCart();
+
+const total=
+cart.reduce(
+(a,b)=>
+a+b.count,
+0
+);
+
+const el=
+document.getElementById(
+"cartCount"
+);
+
+if(el){
+
+el.innerText=total;
+
+}
+
+}
+
+/* FILTER */
+
+function setCategory(cat){
+
+selectedCategory=cat;
+
+renderProducts();
+
+}
+
+/* RENDER */
+
+function renderProducts(){
+
+const grid=
+document.getElementById(
+"productGrid"
+);
+
+if(!grid)return;
+
+const search=
+document.getElementById(
+"searchInput"
+);
+
+const q=
+search
+?
+search.value.toLowerCase()
+:
+"";
+
+const list=
+products.filter(
+p=>
+
+p.stock>0&&
+
+(
+p.name
+.toLowerCase()
+.includes(q)
+
+||
+
+p.category
+.toLowerCase()
+.includes(q)
+
+)
+
+&&
+
+(
+selectedCategory==="all"
+
+||
+
+p.category===selectedCategory
+
+)
+
+);
+
+grid.innerHTML=
+list.map(p=>`
+
+<div class="card">
+
+<img src="${p.image}">
+
+<div class="card-body">
+
+<h3>${p.name}</h3>
+
+<p>
+
+${Number(
+p.price
+).toLocaleString(
+"vi-VN"
+)}₫
+
+</p>
+
+<p>
+
+Còn:
+${p.stock}
+
+</p>
+
+<button
+onclick="addToCart('${p.id}')"
+>
+
+Thêm vào giỏ
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+/* SEARCH */
+
+const input=
+document.getElementById(
+"searchInput"
+);
+
+if(input){
+
+input.addEventListener(
+"input",
+renderProducts
+);
+
+}
+
+/* AUTH */
+
+function isLoggedIn(){
+
+return localStorage
+.getItem(
+"isLoggedIn"
+)==="true";
+
+}
+
+function updateAuthButton(){
+
+const btn=
+document.getElementById(
+"authBtn"
+);
+
+if(!btn)return;
+
+btn.innerText=
+isLoggedIn()
+?
+"Logout"
+:
+"Login";
+
+}
+
+function handleAuthAction(){
+
+if(isLoggedIn()){
+
+localStorage.removeItem(
+"isLoggedIn"
+);
+
+updateAuthButton();
+
+}else{
+
+window.location.href=
+"login.html";
+
+}
+
 }
 
 /* INIT */
 
-renderProducts();
+loadProducts();
+
 updateCartCount();
-/* ================= AUTH ================= */
 
-function isLoggedIn() {
-  return localStorage.getItem("isLoggedIn") === "true";
-}
-
-function updateAuthButton() {
-  const authBtn = document.getElementById("authBtn");
-
-  if (!authBtn) return;
-
-  if (isLoggedIn()) {
-    authBtn.innerText = "Logout";
-  } else {
-    authBtn.innerText = "Login";
-  }
-}
-
-function handleAuthAction() {
-
-  // Nếu đã đăng nhập -> đăng xuất
-  if (isLoggedIn()) {
-
-    localStorage.removeItem("isLoggedIn");
-
-    alert("Đã đăng xuất");
-
-    updateAuthButton();
-
-    // nếu muốn quay về login page:
-    // window.location.href = "login.html";
-
-  } else {
-
-    // chưa đăng nhập -> sang login page
-    window.location.href = "login.html";
-  }
-}
-
-/* ================= INIT ================= */
-
-renderProducts();
-updateCartCount();
 updateAuthButton();
-localStorage.setItem("isLoggedIn", "true");

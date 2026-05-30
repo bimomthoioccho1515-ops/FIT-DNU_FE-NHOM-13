@@ -882,18 +882,28 @@ button:hover{
     font-weight:700;
     margin:auto;
 }
-.trendingcard {
-    display: flex;
-    gap: 20px;             
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+
+}
+/* TRENDING */
+
+.trending{
+    margin-left:70px;
+    margin-top:40px;
 }
 
-.trendingcard img {
-    width: 280px;         
-    height: 320px;          
-    object-fit: cover;     
-    scroll-snap-align: start;
-    flex-shrink: 0;      
+.trendingcard{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    margin-left:80px;
 }
+.trendingcard img{
+    width:450px;
+    height: 500px;
+    object-fit:cover;
+    gap: 3px;
+
 }
+  

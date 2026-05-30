@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/admin.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FashionHub Admin</title>
+
+<link rel="stylesheet" href="./css/admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script defer src="./java/admin.js"></script>
+
 </head>
+
 <body>
 
 <div class="admin-layout">
-    
 
     <!-- SIDEBAR -->
 
@@ -27,57 +36,36 @@
                 Dashboard
             </a>
 
-            <a href="#">
+            <a href="#inventory">
                 <i class="fas fa-box"></i>
-                Products
-            </a>
-
-            <a href="#">
-                <i class="fas fa-warehouse"></i>
                 Inventory
             </a>
 
-            <a href="#">
-                <i class="fas fa-users"></i>
-                Suppliers
-            </a>
-
-            <a href="#">
+            <a href="#revenue">
                 <i class="fas fa-chart-line"></i>
                 Revenue
             </a>
 
-            <a href="#">
-                <i class="fas fa-cog"></i>
-                Settings
+            <a href="#" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
             </a>
-             <a href="#"
-   class="logout-btn"
-   onclick="logout()">
-
-    <i class="fas fa-sign-out-alt"></i>
-    Logout
-
-</a>
 
         </nav>
 
     </aside>
 
-
     <!-- MAIN -->
 
     <main class="admin-main">
 
-        <!-- TOP HEADER -->
+        <!-- HEADER -->
 
         <div class="top-header">
 
             <div>
 
-                <h1>
-                    Dashboard
-                </h1>
+                <h1>Dashboard</h1>
 
                 <p>
                     Welcome back, Admin
@@ -87,12 +75,11 @@
 
             <div class="admin-profile">
 
-                <span>
-                    Admin
-                </span>
+                <span>Admin</span>
 
-                <img src="https://i.pravatar.cc/100"
-                     alt="Admin">
+                <img
+                src="https://i.pravatar.cc/100"
+                alt="Admin">
 
             </div>
 
@@ -109,17 +96,13 @@
                 </div>
 
                 <h3>
-                    Monthly Revenue
+                    Revenue
                 </h3>
 
-                <div class="value"
-                     id="monthly-revenue">
-                    0
-                </div>
-
-                <div class="change"
-                     id="monthly-change">
-                    +0%
+                <div
+                class="value"
+                id="totalRevenue">
+                    0₫
                 </div>
 
             </div>
@@ -134,14 +117,10 @@
                     Inventory
                 </h3>
 
-                <div class="value"
-                     id="total-inventory">
+                <div
+                class="value"
+                id="totalInventory">
                     0
-                </div>
-
-                <div class="change"
-                     id="low-stock-alert">
-                    0 low stock
                 </div>
 
             </div>
@@ -149,20 +128,17 @@
             <div class="stat-card">
 
                 <div class="card-icon">
-                    🚚
+                    🛒
                 </div>
 
                 <h3>
-                    Suppliers
+                    Sold
                 </h3>
 
-                <div class="value"
-                     id="total-suppliers">
+                <div
+                class="value"
+                id="totalSold">
                     0
-                </div>
-
-                <div class="change">
-                    Active
                 </div>
 
             </div>
@@ -170,21 +146,17 @@
             <div class="stat-card">
 
                 <div class="card-icon">
-                    📈
+                    ⚠️
                 </div>
 
                 <h3>
-                    Year Revenue
+                    Low Stock
                 </h3>
 
-                <div class="value"
-                     id="yearly-revenue">
+                <div
+                class="value"
+                id="lowStock">
                     0
-                </div>
-
-                <div class="change"
-                     id="yearly-change">
-                    +0%
                 </div>
 
             </div>
@@ -193,18 +165,9 @@
 
         <!-- CHARTS -->
 
-        <div class="charts-section">
-
-            <div class="chart-container">
-
-                <h3>
-                    Monthly Revenue
-                </h3>
-
-                <canvas id="monthlyChart">
-                </canvas>
-
-            </div>
+        <div
+        class="charts-section"
+        id="revenue">
 
             <div class="chart-container">
 
@@ -212,7 +175,18 @@
                     Revenue Analytics
                 </h3>
 
-                <canvas id="yearlyChart">
+                <canvas id="revenueChart">
+                </canvas>
+
+            </div>
+
+            <div class="chart-container">
+
+                <h3>
+                    Inventory Analytics
+                </h3>
+
+                <canvas id="inventoryChart">
                 </canvas>
 
             </div>
@@ -221,7 +195,9 @@
 
         <!-- INVENTORY -->
 
-        <div class="inventory-section">
+        <div
+        class="inventory-section"
+        id="inventory">
 
             <div class="section-header">
 
@@ -229,74 +205,52 @@
                     Inventory Management
                 </h3>
 
-                <button class="add-btn">
-                    + Add Product
-                </button>
+                <div>
+
+                    <button
+                    class="add-btn"
+                    onclick="openAddModal()">
+
+                        + Add Product
+
+                    </button>
+
+                </div>
 
             </div>
 
-            <table class="inventory-table"
-                   id="inventoryTable">
+            <table
+            class="inventory-table">
 
                 <thead>
 
                     <tr>
 
-                        <th>
-                            Product
-                        </th>
+                        <th>Image</th>
 
-                        <th>
-                            Stock
-                        </th>
+                        <th>Name</th>
 
-                        <th>
-                            Status
-                        </th>
+                        <th>Category</th>
 
-                    </tr>
+                        <th>Price</th>
 
-                </thead>
+                        <th>Stock</th>
 
-                <tbody>
-                </tbody>
+                        <th>Sold</th>
 
-            </table>
+                        <th>Imported</th>
 
-        </div>
+                        <th>Status</th>
 
-        <!-- SUPPLIERS -->
-
-        <div class="suppliers-section">
-
-            <h3>
-                Suppliers
-            </h3>
-
-            <table class="suppliers-table"
-                   id="suppliersTable">
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Supplier
-                        </th>
-
-                        <th>
-                            Products
-                        </th>
-
-                        <th>
-                            Last Import
-                        </th>
+                        <th>Action</th>
 
                     </tr>
 
                 </thead>
 
-                <tbody>
+                <tbody
+                id="inventoryBody">
+
                 </tbody>
 
             </table>
@@ -307,7 +261,108 @@
 
 </div>
 
-<script src="./java/admin.js"></script>
+<!-- ADD PRODUCT MODAL -->
+
+<div
+id="addModal"
+class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+            Add Product
+        </h2>
+
+        <input
+        id="name"
+        type="text"
+        placeholder="Tên sản phẩm">
+
+        <input
+        id="price"
+        type="number"
+        placeholder="Giá">
+
+        <input
+        id="stock"
+        type="number"
+        placeholder="Tồn kho">
+
+        <input
+        id="category"
+        type="text"
+        placeholder="Danh mục">
+
+        <input
+        id="color"
+        type="text"
+        placeholder="Màu">
+
+        <input
+        id="image"
+        type="text"
+        placeholder="Link ảnh">
+
+        <div class="modal-actions">
+
+            <button
+            onclick="addProduct()">
+
+                Save
+
+            </button>
+
+            <button
+            onclick="closeAddModal()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- IMPORT STOCK MODAL -->
+
+<div
+id="importModal"
+class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+            Import Stock
+        </h2>
+
+        <input
+        id="importQuantity"
+        type="number"
+        placeholder="Số lượng nhập">
+
+        <div class="modal-actions">
+
+            <button
+            onclick="confirmImport()">
+
+                Save
+
+            </button>
+
+            <button
+            onclick="closeImportModal()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

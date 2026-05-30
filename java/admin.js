@@ -1,192 +1,231 @@
-// Admin Dashboard JavaScript
+const PRODUCT_API =
+"https://6a1a846abc2f94475492525f.mockapi.io/products";
 
-// Sample data for charts and tables
-const monthlyRevenue = [12000, 15000, 18000, 22000, 25000, 28000, 30000, 32000, 35000, 38000, 40000, 42000];
-const yearlyRevenue = [150000, 180000, 220000, 280000, 350000, 420000];
+const ORDER_API =
+"https://6a1a846abc2f94475492525f.mockapi.io/order";
 
-const inventoryData = [
-    { name: 'Sản phẩm A', stock: 150, status: 'in-stock' },
-    { name: 'Sản phẩm B', stock: 45, status: 'low-stock' },
-    { name: 'Sản phẩm C', stock: 0, status: 'out-of-stock' },
-    { name: 'Sản phẩm D', stock: 200, status: 'in-stock' },
-    { name: 'Sản phẩm E', stock: 80, status: 'in-stock' }
-];
+let products = [];
+let selectedProductId = null;
 
-const suppliersData = [
-    { name: 'Nhà cung cấp 1', products: 25, lastDelivery: '2024-01-15' },
-    { name: 'Nhà cung cấp 2', products: 18, lastDelivery: '2024-01-10' },
-    { name: 'Nhà cung cấp 3', products: 32, lastDelivery: '2024-01-08' },
-    { name: 'Nhà cung cấp 4', products: 15, lastDelivery: '2024-01-05' }
-];
+/* ================= LOAD ================= */
 
-// Initialize dashboard when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeStats();
-    initializeCharts();
-    initializeTables();
+async function loadProducts(){
+
+const res = await fetch(PRODUCT_API);
+products = await res.json();
+
+renderTable();
+updateDashboard();
+renderCharts();
+
+}
+
+/* ================= DASHBOARD ================= */
+
+function updateDashboard(){
+
+let totalInventory = 0;
+let totalSold = 0;
+let lowStock = 0;
+let revenue = 0;
+
+products.forEach(p=>{
+
+totalInventory += Number(p.stock || 0);
+totalSold += Number(p.sold || 0);
+
+if(p.stock <= 5) lowStock++;
+
+revenue += (p.sold || 0) * Number(p.price);
+
 });
 
-function initializeStats() {
-    // Calculate current stats
-    const currentMonthRevenue = monthlyRevenue[monthlyRevenue.length - 1];
-    const previousMonthRevenue = monthlyRevenue[monthlyRevenue.length - 2];
-    const monthChange = ((currentMonthRevenue - previousMonthRevenue) / previousMonthRevenue * 100).toFixed(1);
-
-    const currentYearRevenue = yearlyRevenue[yearlyRevenue.length - 1];
-    const previousYearRevenue = yearlyRevenue[yearlyRevenue.length - 2];
-    const yearChange = ((currentYearRevenue - previousYearRevenue) / previousYearRevenue * 100).toFixed(1);
-
-    const totalInventory = inventoryData.reduce((sum, item) => sum + item.stock, 0);
-    const lowStockItems = inventoryData.filter(item => item.stock < 50 && item.stock > 0).length;
-
-    // Update stats cards
-    document.getElementById('monthly-revenue').textContent = formatCurrency(currentMonthRevenue);
-    document.getElementById('monthly-change').textContent = `${monthChange}% so với tháng trước`;
-    document.getElementById('monthly-change').classList.add(monthChange > 0 ? 'positive' : 'negative');
-
-    document.getElementById('yearly-revenue').textContent = formatCurrency(currentYearRevenue);
-    document.getElementById('yearly-change').textContent = `${yearChange}% so với năm trước`;
-    document.getElementById('yearly-change').classList.add(yearChange > 0 ? 'positive' : 'negative');
-
-    document.getElementById('total-inventory').textContent = totalInventory;
-    document.getElementById('low-stock-alert').textContent = `${lowStockItems} sản phẩm sắp hết`;
-
-    document.getElementById('total-suppliers').textContent = suppliersData.length;
-}
-
-function initializeCharts() {
-    // Monthly Revenue Chart
-    const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-    new Chart(monthlyCtx, {
-        type: 'line',
-        data: {
-            labels: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'],
-            datasets: [{
-                label: 'Doanh thu tháng (VNĐ)',
-                data: monthlyRevenue,
-                borderColor: '#667eea',
-                backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                tension: 0.4,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return formatCurrency(value);
-                        }
-                    }
-                }
-            }
-        }
-    });
-
-    // Yearly Revenue Chart
-    const yearlyCtx = document.getElementById('yearlyChart').getContext('2d');
-    new Chart(yearlyCtx, {
-        type: 'bar',
-        data: {
-            labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
-            datasets: [{
-                label: 'Doanh thu năm (VNĐ)',
-                data: yearlyRevenue,
-                backgroundColor: '#764ba2',
-                borderColor: '#764ba2',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return formatCurrency(value);
-                        }
-                    }
-                }
-            }
-        }
-    });
-}
-
-function initializeTables() {
-    // Inventory Table
-    const inventoryTable = document.querySelector('#inventoryTable tbody');
-    inventoryData.forEach(item => {
-        const row = inventoryTable.insertRow();
-        row.insertCell(0).textContent = item.name;
-        row.insertCell(1).textContent = item.stock;
-
-        const statusCell = row.insertCell(2);
-        const statusBadge = document.createElement('span');
-        statusBadge.className = `status-badge status-${item.status}`;
-        statusBadge.textContent = getStatusText(item.status);
-        statusCell.appendChild(statusBadge);
-    });
-
-    // Suppliers Table
-    const suppliersTable = document.querySelector('#suppliersTable tbody');
-    suppliersData.forEach(supplier => {
-        const row = suppliersTable.insertRow();
-        row.insertCell(0).textContent = supplier.name;
-        row.insertCell(1).textContent = supplier.products;
-        row.insertCell(2).textContent = supplier.lastDelivery;
-    });
-}
-
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-}
-
-function getStatusText(status){
-
-    switch(status){
-
-        case 'in-stock':
-            return 'Còn hàng';
-
-        case 'low-stock':
-            return 'Sắp hết';
-
-        case 'out-of-stock':
-            return 'Hết hàng';
-
-        default:
-            return 'Không xác định';
-    }
+document.getElementById("totalInventory").innerText = totalInventory;
+document.getElementById("totalSold").innerText = totalSold;
+document.getElementById("lowStock").innerText = lowStock;
+document.getElementById("totalRevenue").innerText =
+revenue.toLocaleString("vi-VN") + "₫";
 
 }
 
-/* LOGOUT */
+/* ================= TABLE ================= */
 
+function renderTable(){
 
-/* LOGOUT */
+const tbody = document.getElementById("inventoryBody");
+
+tbody.innerHTML = products.map(p=>`
+
+<tr>
+
+<td><img src="${p.image}" width="50"></td>
+
+<td>${p.name}</td>
+
+<td>${p.category}</td>
+
+<td>${Number(p.price).toLocaleString("vi-VN")}₫</td>
+
+<td>${p.stock}</td>
+
+<td>${p.sold || 0}</td>
+
+<td>${p.imported || 0}</td>
+
+<td>
+${p.stock > 10 ? "🟢 In stock" :
+p.stock > 0 ? "🟡 Low stock" : "🔴 Out"}
+</td>
+
+<td>
+
+<button onclick="openImport('${p.id}')">Import</button>
+<button onclick="deleteProduct('${p.id}')">Delete</button>
+
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+/* ================= ADD PRODUCT ================= */
+
+async function addProduct(){
+
+const data = {
+name: document.getElementById("name").value,
+price: Number(document.getElementById("price").value),
+stock: Number(document.getElementById("stock").value),
+category: document.getElementById("category").value,
+color: document.getElementById("color").value,
+image: document.getElementById("image").value,
+sold: 0,
+imported: Number(document.getElementById("stock").value)
+};
+
+await fetch(PRODUCT_API,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(data)
+});
+
+closeAddModal();
+loadProducts();
+
+}
+
+/* ================= DELETE ================= */
+
+async function deleteProduct(id){
+
+if(!confirm("Delete product?")) return;
+
+await fetch(`${PRODUCT_API}/${id}`,{
+method:"DELETE"
+});
+
+loadProducts();
+
+}
+
+/* ================= IMPORT STOCK ================= */
+
+function openImport(id){
+selectedProductId = id;
+document.getElementById("importModal").style.display="flex";
+}
+
+function closeImportModal(){
+document.getElementById("importModal").style.display="none";
+}
+
+async function confirmImport(){
+
+const qty =
+Number(document.getElementById("importQuantity").value);
+
+const product =
+products.find(p=>p.id==selectedProductId);
+
+product.stock += qty;
+product.imported = (product.imported || 0) + qty;
+
+await fetch(`${PRODUCT_API}/${selectedProductId}`,{
+method:"PUT",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+stock:product.stock,
+imported:product.imported
+})
+});
+
+closeImportModal();
+loadProducts();
+
+}
+
+/* ================= MODAL ================= */
+
+function openAddModal(){
+document.getElementById("addModal").style.display="flex";
+}
+
+function closeAddModal(){
+document.getElementById("addModal").style.display="none";
+}
+
+/* ================= CHARTS ================= */
+
+let revenueChart, inventoryChart;
+
+function renderCharts(){
+
+const ctx1 = document.getElementById("revenueChart");
+const ctx2 = document.getElementById("inventoryChart");
+
+if(revenueChart) revenueChart.destroy();
+if(inventoryChart) inventoryChart.destroy();
+
+/* REVENUE */
+revenueChart = new Chart(ctx1,{
+type:"bar",
+data:{
+labels: products.map(p=>p.name),
+datasets:[{
+label:"Revenue",
+data:products.map(p=>(p.sold||0)*p.price)
+}]
+}
+});
+
+/* INVENTORY */
+inventoryChart = new Chart(ctx2,{
+type:"pie",
+data:{
+labels:products.map(p=>p.name),
+datasets:[{
+data:products.map(p=>p.stock)
+}]
+}
+});
+
+}
+
+/* ================= LOGOUT ================= */
 
 function logout(){
-
-    localStorage.removeItem('isLoggedIn');
-
-    localStorage.removeItem('userRole');
-
-    window.location.href = 'login.html';
-
+localStorage.removeItem("isLoggedIn");
+window.location.href="login.html";
 }
 
+/* ================= INIT ================= */
 
-
+document.addEventListener("DOMContentLoaded",()=>{
+loadProducts();
+});
