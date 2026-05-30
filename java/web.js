@@ -114,3 +114,48 @@ function renderProducts() {
 
 renderProducts();
 updateCartCount();
+/* ================= AUTH ================= */
+
+function isLoggedIn() {
+  return localStorage.getItem("isLoggedIn") === "true";
+}
+
+function updateAuthButton() {
+  const authBtn = document.getElementById("authBtn");
+
+  if (!authBtn) return;
+
+  if (isLoggedIn()) {
+    authBtn.innerText = "Logout";
+  } else {
+    authBtn.innerText = "Login";
+  }
+}
+
+function handleAuthAction() {
+
+  // Nếu đã đăng nhập -> đăng xuất
+  if (isLoggedIn()) {
+
+    localStorage.removeItem("isLoggedIn");
+
+    alert("Đã đăng xuất");
+
+    updateAuthButton();
+
+    // nếu muốn quay về login page:
+    // window.location.href = "login.html";
+
+  } else {
+
+    // chưa đăng nhập -> sang login page
+    window.location.href = "login.html";
+  }
+}
+
+/* ================= INIT ================= */
+
+renderProducts();
+updateCartCount();
+updateAuthButton();
+localStorage.setItem("isLoggedIn", "true");

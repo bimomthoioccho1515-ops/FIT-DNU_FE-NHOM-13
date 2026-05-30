@@ -21,7 +21,7 @@
 
   <span>|</span>
 
-  <a href="#" onclick="handleAuthAction()">Login</a>
+<a href="#" id="authBtn" onclick="handleAuthAction()">Login</a>
 
 </nav>
 
@@ -66,42 +66,44 @@
   <button class="hero-btn" onclick="setCategory('all')">SHOP NOW</button>
   </div>
   <h1 style="font-family:'lemonmilk';" class="featured">Featured</h1>
-  <section class="featured-grid">
+ <section class="featured-grid">
 
-    <div class="featured-card">
+  <div class="featured-card">
+    <img src="./stuff/featured1.jpg" alt="Featured 1">
 
-        <img src="./stuff/featured1.jpg" alt="Featured 1">
+    <div class="featured-overlay">
+      <div class="featured-tag">
+        Change of seasons!
+        <h2>NEW SEASON</h2>
+        <p style="margin-bottom:10px;">Summer season is coming!</p>
+      </div>
 
-        <div class="featured-overlay">
-
-            <h2>NEW SEASON</h2>
-            <p style="margin-bottom :10px";>Summer seasion is coming!</p>
-
-            <button>
-                SHOP NOW
-            </button>
-
-        </div>
-
+      <button>SHOP NOW</button>
     </div>
+  </div>
 
-    <div class="featured-card">
+  <div class="featured-card">
+    <img src="./stuff/featured.avif" alt="Featured 2">
 
-        <img src="./stuff/featured.avif" alt="Featured 2">
-
-        <div class="featured-overlay">
-
-            <h2>URBAN STYLE</h2><br>
-            <p style="margin-bottom :10px;">A urban work of art</p>
-            <button>
-                EXPLORE
-            </button>
-
-        </div>
-
+    <div class="featured-overlay">
+      <div class="featured-tag">
+        The urban collection
+        <h2>URBAN STYLE</h2>
+        <p style="margin-bottom:10px;">An urban work of art</p>
+        <button>EXPLORE</button>
+      </div>
     </div>
-  <h1 class="trending" style="font-family:'lemonmilk';">Trending</h1>
+  </div>
 
+</section>
+<h1 class="trending" style="font-family:'lemonmilk'; margin-left:70px; margin-top:30px;">
+  Trending
+</h1>
+<div class="trendingcard">
+  <img src="./stuff/trending1.jpg" alt="Trending 1">
+  <img src="./stuff/trending2.avif" alt="Trending 2">  
+  <img src="./stuff/trending3.jpg" alt="Trending 3">  
+</div>
 
 </section>
   <section class="products">
@@ -117,15 +119,5 @@
 
     <div class="slider" id="productGrid"></div>
   </section>
-
-  <div class="color-menu">
-    <span>Lọc màu:</span>
-    <button class="color-circle active" data-color="all" onclick="setColor('all')" title="Tất cả">Tất cả</button>
-    <button class="color-circle" data-color="white" onclick="setColor('white')" style="background:#fff" title="Trắng"></button>
-    <button class="color-circle" data-color="black" onclick="setColor('black')" style="background:#111" title="Đen"></button>
-    <button class="color-circle" data-color="blue" onclick="setColor('blue')" style="background:#1e90ff" title="Xanh"></button>
-    <button class="color-circle" data-color="pink" onclick="setColor('pink')" style="background:#ff5a9b" title="Hồng"></button>
-  </div>
-
   </body>
   </html>

@@ -877,6 +877,23 @@ button:hover{
     bottom:12px;
     padding:12px 14px;
   }
-
+.featured-tag{
+    font-size:28px;
+    font-weight:700;
+    margin:auto;
+}
+.trendingcard {
+    display: flex;
+    gap: 20px;             
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 
+.trendingcard img {
+    width: 280px;         
+    height: 320px;          
+    object-fit: cover;     
+    scroll-snap-align: start;
+    flex-shrink: 0;      
+}
+}
