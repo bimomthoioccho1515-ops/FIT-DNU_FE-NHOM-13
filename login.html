@@ -1,33 +1,97 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FashionHub Login</title>
+
+    <link rel="stylesheet" href="./css/login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 </head>
+
 <body class="body">
 
-<form id="loginForm" class="form">
-    <h2><i class="fas fa-sign-in-alt"></i> Đăng nhập</h2>
-    <div class="div">
-        <label class="label"><i class="fas fa-user"></i> Tài khoản:</label>
-        <input type="text" id="username" class="input" placeholder="Nhập tài khoản" required>
-    </div>
-    <div class="div">
-        <label class="label"><i class="fas fa-lock"></i> Mật khẩu:</label>
-        <input type="password" id="password" class="input" placeholder="Nhập mật khẩu" required>
-    </div>
-    <div class="register-link">
-        <a href="register.html" class="register"><i class="fas fa-user-plus"></i> Chưa có tài khoản? Đăng ký</a>
-        <br>
-        <a href="#" class="forgot"><i class="fas fa-unlock-alt"></i> Quên mật khẩu?</a>
-    </div>
-    <button type="submit" class="button"><i class="fas fa-arrow-right"></i> Đăng nhập</button>
-    <p id="message"></p>
-</form>
+    <div class="login-container">
 
-<script src="web.js"></script>
-<script src="login.js"></script>
+        <div class="left-side">
+
+            <div class="overlay">
+
+                <h1>FASHIONHUB</h1>
+
+                <p>
+                    STREETWEAR<br>
+                    & MODERN STYLE
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="right-side">
+
+            <form id="loginForm" class="form">
+
+                <h2>Sign In</h2>
+
+                <p class="subtitle">
+                    Đăng nhập để tiếp tục mua sắm
+                </p>
+
+                <input type="text"
+                       id="username"
+                       class="input"
+                       placeholder="Email hoặc Username"
+                       required>
+
+                <input type="password"
+                       id="password"
+                       class="input"
+                       placeholder="Password"
+                       required>
+
+                <div class="form-options">
+
+                    <label>
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#">
+                        Forgot?
+                    </a>
+
+                </div>
+
+                <button type="submit" class="button">
+                    SIGN IN
+                </button>
+
+                <div class="register-link">
+
+                    <span>Chưa có tài khoản?</span>
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                </div>
+
+                <p id="message"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="./java/login.js"></script>
+
 </body>
 </html>

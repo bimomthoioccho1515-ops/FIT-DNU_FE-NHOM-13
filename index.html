@@ -1,138 +1,123 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FashionHub</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="web.js" defer></script>
-</head>
+  <!DOCTYPE html>
+  <html lang="vi">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FashionHub</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="./java/web.js" defer></script>
+  </head>
+  <body>
+<!-- TOP NAVBAR -->
 
-<body>
+<nav class="top-navbar">
 
-<header>
-  <div class="logo">FashionHub</div>
-  <button class="login-btn" onclick="window.location.href='login.html'">Đăng nhập</button>
+  <a href="#">Find a Store</a>
 
-  <nav class="navbar">
-    <a href="#">Trang chủ</a>
-    <div class="dropdown">
-      <a href="#" class="dropbtn">Sản phẩm</a>
-      <div class="dropdown-content">
-        <button type="button" onclick="setCategory('Quần áo')">Quần áo</button>
-        <button type="button" onclick="setCategory('Túi xách')">Túi xách</button>
-        <button type="button" onclick="setCategory('Giày')">Giày</button>
-        <button type="button" onclick="setCategory('Phụ kiện')">Phụ kiện</button>
-      </div>
-    </div>
-    <a href="#">Liên hệ</a>
-  </nav>
+  <span>|</span>
 
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+  <a href="#">Help</a>
+
+  <span>|</span>
+
+<a href="#" id="authBtn" onclick="handleAuthAction()">Login</a>
+
+</nav>
+
+<!-- MAIN HEADER -->
+
+<header class="main-header">
+  
+
+  <div class="logo" style="font-family: 'akira', sans-serif; font-size: 28px; font-weight: 700;">
+    FashionHub
   </div>
+
+  <div class="header-right">
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search">
+    </div>
+
+   <button class="header-icon">
+      <span>♡</span>
+</button>
+  <button class="header-icon cart-btn"
+        onclick="window.location.href='cart.html'">
+    🛒
+    <span id="cartCount" class="cart-count">0</span>
+</button>
+  </div>
+
 </header>
+<!-- INFO BAR -->
 
-<section class="features">
-  <div class="feature-card" onclick="setCategory('Quần áo')">
-    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800" alt="Quần áo">
-    <div class="feature-overlay">
-      <span>Quần áo</span>
-      <p>Phong cách oldschool
-      </p>
-    </div>
-  </div>
-  <div class="feature-card" onclick="setCategory('Giày')">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-liv3ijb0k24y18" alt="Giày">
-    <div class="feature-overlay">
-      <span>Giày</span>
-      <p>Step up style</p>
-    </div>
-  </div>
-  <div class="feature-card" onclick="setCategory('Túi xách')">
-    <img src="https://kat.vn/wp-content/uploads/2024/10/thuong-hieu-tui-xach-nu-25.jpg" alt="Túi xách">
-    <div class="feature-overlay">
-      <span>Túi xách</span>
-      <p>Thiết kế sang trọng</p>
-    </div>
-  </div>
-  <div class="feature-card" onclick="setCategory('Phụ kiện')">
-    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800" alt="Phụ kiện">
-    <div class="feature-overlay">
-      <span>Phụ kiện</span>
-      <p>Tinh tế từng chi tiết</p>
-    </div>
-  </div>
-</section>
-
-<section class="hero">
-  <div>
-    <h1>FashionHub Việt Nam</h1>
-    <p>Xu hướng thời trang mới nhất 2026</p>
-  </div>
-</section>
-
-<section class="products">
-  <div class="product-controls">
-    <div class="categories">
-      <button class="category-btn active" data-category="all" onclick="setCategory('all')">Tất cả</button>
-      <button class="category-btn" data-category="Quần áo" onclick="setCategory('Quần áo')">Quần áo</button>
-      <button class="category-btn" data-category="Túi xách" onclick="setCategory('Túi xách')">Túi xách</button>
-      <button class="category-btn" data-category="Giày" onclick="setCategory('Giày')">Giày</button>
-      <button class="category-btn" data-category="Phụ kiện" onclick="setCategory('Phụ kiện')">Phụ kiện</button>
-    </div>
-  </div>
-
-  <div class="slider" id="productGrid"></div>
-</section>
-
-<div class="color-menu">
-  <span>Lọc màu:</span>
-  <button class="color-circle active" data-color="all" onclick="setColor('all')" title="Tất cả">Tất cả</button>
-  <button class="color-circle" data-color="white" onclick="setColor('white')" style="background:#fff" title="Trắng"></button>
-  <button class="color-circle" data-color="black" onclick="setColor('black')" style="background:#111" title="Đen"></button>
-  <button class="color-circle" data-color="blue" onclick="setColor('blue')" style="background:#1e90ff" title="Xanh"></button>
-  <button class="color-circle" data-color="pink" onclick="setColor('pink')" style="background:#ff5a9b" title="Hồng"></button>
+<div class="info-bar">
+    <p>
+        FREE SHIP ON COD  •  30 DAY FREE RETURN<br>
+        <span class="info-bar" style="font-family:'lemonmilk';"><u>join now for more details</u></span>
+    </p>
 </div>
 
-<section class="cart">
-  <h2>🛒 Giỏ hàng</h2>
-  <div id="cartItems"></div>
-  <div class="total">
-    Tổng tiền:
-    <span id="total">0₫</span>
+  <div class="hero">
+  <h1 class="welcome" style="font-family: 'akira', sans-serif;">BUILD UP YOUR STYLE</h1>
+  <p style="font-family: 'akira', sans-serif;">READY FOR THE SUMMER</p>
+  <button class="hero-btn" onclick="setCategory('all')">SHOP NOW</button>
   </div>
-  <button class="checkout-btn" onclick="showPaymentOptions()">Thanh toán</button>
+  <h1 style="font-family:'lemonmilk';" class="featured">Featured</h1>
+ <section class="featured-grid">
 
-  <div id="paymentOptions" class="payment-modal" style="display:none;">
-    <div>
-      <h3>Thông tin khách hàng</h3>
-      <form id="customerForm">
-        <input type="text" id="customerName" placeholder="Họ và tên" required>
-        <input type="tel" id="customerPhone" placeholder="Số điện thoại" required>
-        <input type="text" id="customerAddress" placeholder="Địa chỉ giao hàng" required>
-      </form>
-      <h3>Chọn phương thức thanh toán</h3>
-      <div class="payment-methods">
-        <button class="payment-method" onclick="selectPayment('cod')">
-          <span>🚚</span>
-          <div>
-            <strong>Ship COD</strong>
-            <p>Thanh toán khi nhận hàng</p>
-          </div>
-        </button>
-        <button class="payment-method" onclick="selectPayment('bank')">
-          <span>🏦</span>
-          <div>
-            <strong>Chuyển khoản</strong>
-            <p>Ngân hàng Vietcombank</p>
-          </div>
-        </button>
+  <div class="featured-card">
+    <img src="./stuff/featured1.jpg" alt="Featured 1">
+
+    <div class="featured-overlay">
+      <div class="featured-tag">
+        Change of seasons!
+        <h2>NEW SEASON</h2>
+        <p style="margin-bottom:10px;">Summer season is coming!</p>
       </div>
-      <button class="close-modal" onclick="hidePaymentOptions()">Đóng</button>
+
+      <button>SHOP NOW</button>
     </div>
   </div>
+
+  <div class="featured-card">
+    <img src="./stuff/featured.avif" alt="Featured 2">
+
+    <div class="featured-overlay">
+      <div class="featured-tag">
+        The urban collection
+        <h2>URBAN STYLE</h2>
+        <p style="margin-bottom:10px;">An urban work of art</p>
+        <button>EXPLORE</button>
+      </div>
+    </div>
+  </div>
+
 </section>
-</body>
-</html>
+<h1 class="trending" style="font-family:'lemonmilk'; margin-left:70px; margin-top:30px;">
+  Trending
+</h1>
+<div class="trendingcard">
+  <img src="./stuff/trending1.avif" alt="Trending 1">
+  <img src="./stuff/trending2.webp" alt="Trending 2">  
+  <img src="./stuff/trending3.webp" alt="Trending 3">  
+</div>
+
+</section>
+  <section class="products">
+    <div class="product-controls">
+      <div class="categories">
+        <button class="category-btn active" data-category="all" onclick="setCategory('all')">Tất cả</button>
+        <button class="category-btn" data-category="Quần áo" onclick="setCategory('Quần áo')">Quần áo</button>
+        <button class="category-btn" data-category="Túi xách" onclick="setCategory('Túi xách')">Túi xách</button>
+        <button class="category-btn" data-category="Giày" onclick="setCategory('Giày')">Giày</button>
+        <button class="category-btn" data-category="Phụ kiện" onclick="setCategory('Phụ kiện')">Phụ kiện</button>
+      </div>
+    </div>
+
+    <div class="slider" id="productGrid"></div>
+  </section>
+  </body>
+  </html>

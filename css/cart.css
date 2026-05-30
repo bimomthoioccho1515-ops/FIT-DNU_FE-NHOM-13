@@ -1,0 +1,172 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:#f7f7f7;
+
+    color:#111;
+}
+
+/* HEADER */
+
+.cart-header{
+    height:80px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 50px;
+
+    background:#fff;
+
+    border-bottom:1px solid #e5e5e5;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+.back-btn{
+    text-decoration:none;
+
+    color:#111;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+/* PAGE */
+
+.cart-page{
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    padding:45px;
+}
+
+/* LEFT */
+
+.cart-left{
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:20px;
+}
+
+.cart-left h1{
+    margin-bottom:30px;
+
+    font-size:32px;
+
+    letter-spacing:1px;
+}
+
+/* RIGHT */
+
+.cart-right{
+    height:fit-content;
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:20px;
+}
+
+.cart-right h2{
+    margin-bottom:30px;
+
+    font-size:24px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:30px;
+
+    font-size:18px;
+    font-weight:600;
+}
+
+/* BUTTON */
+
+.checkout-btn{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.checkout-btn:hover{
+    background:#000;
+}
+
+/* CART ITEM */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececec;
+}
+
+.cart-item img{
+    width:110px;
+    height:110px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+}
+
+.cart-info h3{
+    font-size:17px;
+
+    margin-bottom:8px;
+}
+
+.cart-info p{
+    color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .cart-page{
+        grid-template-columns:1fr;
+    }
+
+}
