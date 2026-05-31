@@ -71,6 +71,9 @@
     font-size:28px;
     font-weight:700;
     letter-spacing:1px;
+    a:visited{
+        color:#111;
+    }
 }
 
 /* RIGHT */
@@ -905,5 +908,22 @@ button:hover{
     object-fit:cover;
     gap: 3px;
 
+}
+@font-face {
+    font-family: 'lemonmilk2';
+    src: url('../stuff/lmmilk2.otf') format('truetype');
+    font-style: normal;
+}
+.nav-links{
+    display:flex;
+    gap:24px;
+  margin-left:80px;
+    font-family: 'lemonmilk2', sans-serif;
+    a:link, a:visited {
+        color: #111;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
   
