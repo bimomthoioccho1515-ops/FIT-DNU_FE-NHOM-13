@@ -1,3 +1,13 @@
+if(
+localStorage.getItem(
+"userRole"
+)!=="admin"
+){
+
+location.href=
+"login.html";
+
+}
 const PRODUCT_API =
 "https://6a1a846abc2f94475492525f.mockapi.io/products";
 

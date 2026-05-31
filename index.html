@@ -1,123 +1,550 @@
-  <!DOCTYPE html>
-  <html lang="vi">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FashionHub</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="./java/web.js" defer></script>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0"
+>
+
+<title>
+FashionHub
+</title>
+
+<link
+rel="stylesheet"
+href="./css/style.css"
+>
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet"
+>
+
+<script
+src="./java/web.js"
+defer>
+</script>
+
+</head>
+
+<body>
+
 <!-- TOP NAVBAR -->
 
 <nav class="top-navbar">
 
-  <a href="#">Find a Store</a>
+<a href="#">
+Find a Store
+</a>
 
-  <span>|</span>
+<span>|</span>
 
-  <a href="#">Help</a>
+<a href="#">
+Help
+</a>
 
-  <span>|</span>
+<span>|</span>
 
-<a href="#" id="authBtn" onclick="handleAuthAction()">Login</a>
+<a
+href="#"
+id="authBtn"
+onclick="handleAuthAction()"
+>
+
+Login
+
+</a>
 
 </nav>
 
-<!-- MAIN HEADER -->
+
+<!-- HEADER -->
 
 <header class="main-header">
-  
 
-  <div class="logo" style="font-family: 'akira', sans-serif; font-size: 28px; font-weight: 700;">
-    FashionHub
-  </div>
+<a
+class="logo"
+style="
+font-family:akira;
+"
+href="index.html" 
+>
 
-  <div class="header-right">
+FashionHub
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search">
-    </div>
+</a>
 
-   <button class="header-icon">
-      <span>♡</span>
+
+<div class="nav-links">
+
+
+<a
+href="#"
+onclick="setCategory('Quần áo')"
+>
+Clothing
+</a>
+
+<a
+href="#"
+onclick="setCategory('Túi xách')"
+>
+Bags
+</a>
+
+<a
+href="#"
+onclick="setCategory('Giày')"
+>
+Shoes
+</a>
+
+<a
+href="#"
+onclick="setCategory('Phụ kiện')"
+>
+Accessories
+</a>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="search-bar">
+
+<input
+
+type="text"
+
+id="searchInput"
+
+placeholder=
+"Search products"
+
+>
+
+</div>
+
+
+<button
+class="header-icon"
+>
+
+♡
+
 </button>
-  <button class="header-icon cart-btn"
-        onclick="window.location.href='cart.html'">
-    🛒
-    <span id="cartCount" class="cart-count">0</span>
+
+
+<button
+
+class=
+"header-icon cart-btn"
+
+onclick=
+"location.href='cart.html'"
+
+>
+
+🛒
+
+<span
+id="cartCount"
+class="cart-count"
+>
+
+0
+
+</span>
+
 </button>
-  </div>
+
+</div>
 
 </header>
-<!-- INFO BAR -->
+
+
+<!-- INFO -->
 
 <div class="info-bar">
-    <p>
-        FREE SHIP ON COD  •  30 DAY FREE RETURN<br>
-        <span class="info-bar" style="font-family:'lemonmilk';"><u>join now for more details</u></span>
-    </p>
+
+<p>
+
+FREE STANDARD DELIVERING &
+
+</p>
+
+<p>
+
+30 DAY FREE RETURN
+
+</p>
+
 </div>
 
-  <div class="hero">
-  <h1 class="welcome" style="font-family: 'akira', sans-serif;">BUILD UP YOUR STYLE</h1>
-  <p style="font-family: 'akira', sans-serif;">READY FOR THE SUMMER</p>
-  <button class="hero-btn" onclick="setCategory('all')">SHOP NOW</button>
-  </div>
-  <h1 style="font-family:'lemonmilk';" class="featured">Featured</h1>
- <section class="featured-grid">
 
-  <div class="featured-card">
-    <img src="./stuff/featured1.jpg" alt="Featured 1">
+<!-- HERO -->
 
-    <div class="featured-overlay">
-      <div class="featured-tag">
-        Change of seasons!
-        <h2>NEW SEASON</h2>
-        <p style="margin-bottom:10px;">Summer season is coming!</p>
-      </div>
+<section class="hero">
 
-      <button>SHOP NOW</button>
-    </div>
-  </div>
+<h1
+class="welcome"
+style="
+font-family:akira;
+"
+>
 
-  <div class="featured-card">
-    <img src="./stuff/featured.avif" alt="Featured 2">
+BUILD UP YOUR STYLE
 
-    <div class="featured-overlay">
-      <div class="featured-tag">
-        The urban collection
-        <h2>URBAN STYLE</h2>
-        <p style="margin-bottom:10px;">An urban work of art</p>
-        <button>EXPLORE</button>
-      </div>
-    </div>
-  </div>
-
-</section>
-<h1 class="trending" style="font-family:'lemonmilk'; margin-left:70px; margin-top:30px;">
-  Trending
 </h1>
-<div class="trendingcard">
-  <img src="./stuff/trending1.avif" alt="Trending 1">
-  <img src="./stuff/trending2.webp" alt="Trending 2">  
-  <img src="./stuff/trending3.webp" alt="Trending 3">  
+
+<p
+style="
+font-family:akira;
+"
+>
+
+READY FOR THE SUMMER
+
+</p>
+
+<button
+
+class="hero-btn"
+
+onclick=
+"
+document
+.querySelector(
+'.products'
+)
+.scrollIntoView({
+
+behavior:
+'smooth'
+
+})
+"
+
+>
+
+SHOP NOW
+
+</button>
+
+</section>
+
+
+<!-- FEATURED -->
+
+<h1
+
+class="featured"
+
+style="
+font-family:
+lemonmilk;
+"
+
+>
+
+Featured
+
+</h1>
+
+
+<section
+class="featured-grid"
+>
+
+<div
+class="featured-card"
+>
+
+<img
+src="./stuff/featured1.jpg"
+>
+
+<div
+class="featured-overlay"
+>
+
+<div
+class="featured-tag"
+>
+
+NEW SEASON
+
+</div>
+
+<h2>
+
+Summer Collection
+
+</h2>
+
+<p>
+
+Discover now
+
+</p>
+
+<button>
+
+SHOP
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="featured-card"
+>
+
+<img
+src="./stuff/featured.avif"
+>
+
+<div
+class="featured-overlay"
+>
+
+<div
+class="featured-tag"
+>
+
+URBAN
+
+</div>
+
+<h2>
+
+Street Style
+
+</h2>
+
+<p>
+
+Explore collection
+
+</p>
+
+<button>
+
+EXPLORE
+
+</button>
+
+</div>
+
 </div>
 
 </section>
-  <section class="products">
-    <div class="product-controls">
-      <div class="categories">
-        <button class="category-btn active" data-category="all" onclick="setCategory('all')">Tất cả</button>
-        <button class="category-btn" data-category="Quần áo" onclick="setCategory('Quần áo')">Quần áo</button>
-        <button class="category-btn" data-category="Túi xách" onclick="setCategory('Túi xách')">Túi xách</button>
-        <button class="category-btn" data-category="Giày" onclick="setCategory('Giày')">Giày</button>
-        <button class="category-btn" data-category="Phụ kiện" onclick="setCategory('Phụ kiện')">Phụ kiện</button>
-      </div>
-    </div>
 
-    <div class="slider" id="productGrid"></div>
-  </section>
-  </body>
-  </html>
+
+<!-- TRENDING -->
+
+<h1
+class="trending"
+style="
+font-family:
+lemonmilk;
+"
+>
+
+Trending
+
+</h1>
+
+<div
+class="trendingcard"
+>
+
+<img
+src="./stuff/trending1.avif"
+>
+
+<img
+src="./stuff/trending2.webp"
+>
+
+<img
+src="./stuff/trending3.webp"
+>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<section
+class="products"
+>
+
+<div
+class="product-controls"
+>
+
+<div
+class="categories"
+>
+
+<button
+
+class=
+"category-btn active"
+
+data-category=
+"all"
+
+onclick=
+"setCategory('all')"
+
+>
+
+All
+
+</button>
+
+
+<button
+
+class=
+"category-btn"
+
+data-category=
+"Quần áo"
+
+onclick=
+"setCategory('Quần áo')"
+
+>
+
+Clothing
+
+</button>
+
+
+<button
+
+class=
+"category-btn"
+
+data-category=
+"Túi xách"
+
+onclick=
+"setCategory('Túi xách')"
+
+>
+
+Bags
+
+</button>
+
+
+<button
+
+class=
+"category-btn"
+
+data-category=
+"Giày"
+
+onclick=
+"setCategory('Giày')"
+
+>
+
+Shoes
+
+</button>
+
+
+<button
+
+class=
+"category-btn"
+
+data-category=
+"Phụ kiện"
+
+onclick=
+"setCategory('Phụ kiện')"
+
+>
+
+Accessories
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="productGrid"
+class="slider"
+>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer
+style="
+
+background:#111;
+
+color:white;
+
+padding:60px;
+
+text-align:center;
+
+margin-top:60px;
+
+"
+
+>
+
+<h2>
+
+FashionHub
+
+</h2>
+
+<br>
+
+<p>
+
+Premium Fashion Store
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 FashionHub
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width,initial-scale=1">
+
+<title>
+Checkout
+</title>
+
+<link
+rel="stylesheet"
+href="./css/checkout.css">
+
+<script
+src="./java/checkout.js"
+defer>
+</script>
+
+</head>
+
+<body>
+
+<header class="main-header">
+
+<div class="logo">
+
+FashionHub
+
+</div>
+
+<button
+class="back"
+
+onclick="
+location.href='cart.html'
+">
+
+← Back
+
+</button>
+
+</header>
+
+
+<section class="checkout">
+
+<h1>
+
+CHECKOUT
+
+</h1>
+
+<div
+id="checkoutItems">
+
+</div>
+
+
+<div class="form">
+
+<input
+id="name"
+placeholder=
+"Họ tên">
+
+<input
+id="phone"
+placeholder=
+"Số điện thoại">
+
+<textarea
+id="address"
+placeholder=
+"Địa chỉ giao hàng">
+</textarea>
+
+<div
+class="total">
+
+Tổng:
+
+<span
+id="total">
+
+0₫
+
+</span>
+
+</div>
+
+<button
+onclick="placeOrder()">
+
+ĐẶT HÀNG
+
+</button>
+
+</div>
+
+</section>
+
+</body>
+
+</html> 

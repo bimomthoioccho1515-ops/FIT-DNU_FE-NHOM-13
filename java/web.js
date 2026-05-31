@@ -1,3 +1,5 @@
+/* ================= API ================= */
+
 const API_URL =
 "https://6a1a846abc2f94475492525f.mockapi.io/products";
 
@@ -8,15 +10,17 @@ let products = [];
 let selectedCategory = "all";
 let selectedColor = "all";
 
-/* LOAD PRODUCT */
+/* ================= LOAD PRODUCTS ================= */
 
-async function loadProducts() {
+async function loadProducts(){
 
 try{
 
-const res = await fetch(API_URL);
+const res =
+await fetch(API_URL);
 
-products = await res.json();
+products =
+await res.json();
 
 renderProducts();
 
@@ -25,14 +29,16 @@ catch(err){
 
 console.log(err);
 
-document.getElementById("productGrid").innerHTML =
-"<h2>Không tải được dữ liệu</h2>";
+document.getElementById(
+"productGrid"
+).innerHTML=
+"<h2>Lỗi tải dữ liệu</h2>";
 
 }
 
 }
 
-/* CART */
+/* ================= CART ================= */
 
 function getCart(){
 
@@ -51,36 +57,23 @@ JSON.stringify(cart)
 
 }
 
-/* ADD */
+/* ================= ADD ================= */
 
-async function addToCart(id){
+function addToCart(id){
 
 const product =
 products.find(
-p=>Number(p.id)===Number(id)
+p=>String(p.id)===String(id)
 );
 
-if(!product){
+if(!product)return;
 
-alert("Không tìm thấy");
+let cart =
+getCart();
 
-return;
-
-}
-
-if(product.stock<=0){
-
-alert("Hết hàng");
-
-return;
-
-}
-
-let cart=getCart();
-
-const item=
+const item =
 cart.find(
-i=>Number(i.id)===Number(id)
+x=>x.id===id
 );
 
 if(item){
@@ -90,126 +83,88 @@ item.count++;
 }else{
 
 cart.push({
-...product,
+
+id:product.id,
+name:product.name,
+price:product.price,
+image:product.image,
 count:1
+
 });
 
 }
 
 saveCart(cart);
 
-/* update stock */
-
-product.stock--;
-
-const newSold =
-(product.sold || 0) + 1;
-
-product.sold =
-newSold;
-
-try{
-
-await fetch(
-
-`${API_URL}/${id}`,
-
-{
-
-method:"PUT",
-
-headers:{
-"Content-Type":
-"application/json"
-},
-
-body:JSON.stringify({
-
-stock:product.stock,
-
-sold:newSold
-
-})
+updateCartCount();
 
 }
-
-);
-
-}
-catch{
-
-alert(
-"Lỗi cập nhật kho"
-);
-
-}
-
-}
-
-/* COUNT */
+/* ================= COUNT ================= */
 
 function updateCartCount(){
 
-const cart=getCart();
-
-const total=
-cart.reduce(
-(a,b)=>
-a+b.count,
-0
-);
-
-const el=
+const el =
 document.getElementById(
 "cartCount"
 );
 
-if(el){
+if(!el){
 
-el.innerText=total;
-
-}
+return;
 
 }
 
-/* FILTER */
+const cart =
+getCart();
 
-function setCategory(cat){
+const total =
+cart.reduce(
+(sum,item)=>
+sum+item.count,
+0
+);
 
-selectedCategory=cat;
-
-renderProducts();
+el.innerText=
+total;
 
 }
 
-/* RENDER */
+/* ================= RENDER ================= */
 
 function renderProducts(){
 
-const grid=
+const grid =
 document.getElementById(
 "productGrid"
 );
 
-if(!grid)return;
+if(!grid){
 
-const search=
+return;
+
+}
+
+const search =
 document.getElementById(
 "searchInput"
 );
 
-const q=
+const q =
 search
 ?
-search.value.toLowerCase()
+search.value
+.toLowerCase()
 :
 "";
 
-const list=
-products.filter(
-p=>
+const list =
+products.filter(p=>{
 
-p.stock>0&&
+return(
+
+p.stock>0
+
+&&
 
 (
 p.name
@@ -221,7 +176,6 @@ p.name
 p.category
 .toLowerCase()
 .includes(q)
-
 )
 
 &&
@@ -232,23 +186,64 @@ selectedCategory==="all"
 ||
 
 p.category===selectedCategory
+)
 
+&&
+
+(
+selectedColor==="all"
+
+||
+
+p.color===selectedColor
 )
 
 );
 
+});
+
+if(list.length===0){
+
+grid.innerHTML=`
+
+<div
+class="empty-state">
+
+Không tìm thấy sản phẩm
+
+</div>
+
+`;
+
+return;
+
+}
+
 grid.innerHTML=
 list.map(p=>`
 
-<div class="card">
+<div
+class="card">
 
-<img src="${p.image}">
+<img
+src="${p.image}"
 
-<div class="card-body">
+onclick="
+location.href=
+'product.html?id=${p.id}'
+">
 
-<h3>${p.name}</h3>
+<div
+class="card-body">
 
-<p>
+<h3>
+
+${p.name}
+
+</h3>
+
+<div
+class="price">
 
 ${Number(
 p.price
@@ -256,18 +251,25 @@ p.price
 "vi-VN"
 )}₫
 
-</p>
+</div>
 
-<p>
+<div
+class="stock-label">
 
 Còn:
 ${p.stock}
 
-</p>
+</div>
 
 <button
-onclick="addToCart('${p.id}')"
->
+
+onclick="
+event.stopPropagation();
+
+addToCart(
+'${p.id}'
+)
+">
 
 Thêm vào giỏ
 
@@ -281,30 +283,79 @@ Thêm vào giỏ
 
 }
 
-/* SEARCH */
+/* ================= FILTER ================= */
 
-const input=
-document.getElementById(
-"searchInput"
+function setCategory(cat){
+
+selectedCategory=
+cat;
+
+document
+.querySelectorAll(
+".category-btn"
+)
+
+.forEach(
+btn=>
+
+btn.classList.remove(
+"active"
+)
+
 );
 
-if(input){
+const current =
+document.querySelector(
+`[data-category="${cat}"]`
+);
 
-input.addEventListener(
-"input",
-renderProducts
+if(current){
+
+current.classList.add(
+"active"
 );
 
 }
 
-/* AUTH */
+renderProducts();
+
+}
+
+/* ================= SEARCH ================= */
+
+document
+.addEventListener(
+"input",
+e=>{
+
+if(
+
+e.target.id===
+"searchInput"
+
+){
+
+renderProducts();
+
+}
+
+}
+);
+
+/* ================= LOGIN ================= */
 
 function isLoggedIn(){
 
-return localStorage
+return(
+
+localStorage
 .getItem(
 "isLoggedIn"
-)==="true";
+)
+
+==="true"
+
+);
 
 }
 
@@ -315,40 +366,70 @@ document.getElementById(
 "authBtn"
 );
 
-if(!btn)return;
+if(!btn){
+
+return;
+
+}
 
 btn.innerText=
+
 isLoggedIn()
+
 ?
+
 "Logout"
+
 :
+
 "Login";
 
 }
 
 function handleAuthAction(){
 
-if(isLoggedIn()){
+if(
+
+isLoggedIn()
+
+){
 
 localStorage.removeItem(
 "isLoggedIn"
 );
 
+localStorage.removeItem(
+"currentUser"
+);
+
+localStorage.removeItem(
+"userRole"
+);
+
 updateAuthButton();
 
-}else{
+alert(
+"Đăng xuất thành công"
+);
 
-window.location.href=
+}
+else{
+
+location.href=
 "login.html";
 
 }
 
 }
 
-/* INIT */
+/* ================= INIT ================= */
+
+window.onload=()=>{
 
 loadProducts();
 
 updateCartCount();
 
 updateAuthButton();
+
+};
