@@ -60,43 +60,66 @@ location.href='cart.html'
 
 
 <section class="checkout">
-
-<h1>
-
-CHECKOUT
-
-</h1>
-
-<div
-id="checkoutItems">
-
-</div>
-
-
-<div class="form">
-  <div class="form-left">
-    <input id="name" placeholder="Họ tên">
-    <input id="phone" placeholder="Số điện thoại">
-    <textarea id="address" placeholder="Địa chỉ giao hàng"></textarea>
-    <select id="paymentMethod">
-      <option value="">Chọn cổng thanh toán</option>
-      <option value="momo">Momo</option>
-      <option value="bank">Ngân hàng</option>
-      <option value="card">Thẻ nội địa</option>
-    </select>
-  </div>
-  <aside class="form-right">
-    <div class="summary-panel">
-      <div class="summary-title">Tóm tắt thanh toán</div>
-      <div class="total">
-        Tổng:
-        <span id="total">0₫</span>
+  <div class="checkout-header">
+    <div class="section-title">
+      <span>01</span>
+      <div>
+        <h1>Checkout</h1>
+        <p>Hoàn tất đơn hàng trong vài bước đơn giản.</p>
       </div>
-      <button onclick="placeOrder()">THANH TOÁN</button>
     </div>
-  </aside>
-</div>
+    <div class="steps">
+      <div class="step active">Shipping</div>
+      <div class="step">Payment</div>
+      <div class="step">Review</div>
+    </div>
+  </div>
 
+  <div id="checkoutItems"></div>
+
+  <div class="form">
+    <div class="form-left">
+      <div class="field-group">
+        <label for="name">Họ tên</label>
+        <input id="name" placeholder="Họ tên">
+      </div>
+      <div class="field-group">
+        <label for="phone">Số điện thoại</label>
+        <input id="phone" placeholder="Số điện thoại">
+      </div>
+      <div class="field-group">
+        <label for="address">Địa chỉ giao hàng</label>
+        <textarea id="address" placeholder="Địa chỉ giao hàng"></textarea>
+      </div>
+      <div class="field-group">
+        <label for="paymentMethod">Cổng thanh toán</label>
+        <select id="paymentMethod">
+          <option value="">Chọn cổng thanh toán</option>
+          <option value="momo">Momo</option>
+          <option value="bank">Ngân hàng</option>
+          <option value="card">Thẻ nội địa</option>
+        </select>
+      </div>
+    </div>
+    <aside class="form-right">
+      <div class="summary-panel">
+        <div class="summary-title">Tóm tắt đơn hàng</div>
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="total">0₫</span>
+        </div>
+        <div class="summary-line small">
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+        <div class="summary-total">
+          <span>Tổng</span>
+          <strong id="summaryTotal">0₫</strong>
+        </div>
+        <button onclick="placeOrder()">Thanh toán</button>
+      </div>
+    </aside>
+  </div>
 </section>
 
 </body>

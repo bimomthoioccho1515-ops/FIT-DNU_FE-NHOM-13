@@ -88,6 +88,11 @@ total.toLocaleString(
 
 +"₫";
 
+const summaryTotal = document.getElementById("summaryTotal");
+if (summaryTotal) {
+  summaryTotal.innerText = total.toLocaleString("vi-VN") + "₫";
+}
+
 }
 
 async function placeOrder(){

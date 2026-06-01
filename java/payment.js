@@ -7,7 +7,7 @@ function getPendingOrder() {
 function renderPayment() {
   const order = getPendingOrder();
   if (!order) {
-    alert("Không có đơn hàng nào để thanh toán.");
+    alert("No pending order found.");
     location.href = "cart.html";
     return;
   }
@@ -15,21 +15,21 @@ function renderPayment() {
   const box = document.getElementById("paymentSummary");
   box.innerHTML = `
     <div class="order-info">
-      <p><strong>Họ tên:</strong> ${order.name}</p>
-      <p><strong>Số điện thoại:</strong> ${order.phone}</p>
-      <p><strong>Địa chỉ:</strong> ${order.address}</p>
-      <p><strong>Cổng thanh toán:</strong> ${order.paymentMethod.toUpperCase()}</p>
+      <p><strong>Name:</strong> ${order.name}</p>
+      <p><strong>Phone:</strong> ${order.phone}</p>
+      <p><strong>Shipping address:</strong> ${order.address}</p>
+      <p><strong>Payment method:</strong> ${order.paymentMethod.toUpperCase()}</p>
     </div>
     <div class="order-items">
       ${order.cart
         .map(
           item => `
             <div class="item">
-              <img src="${item.image}">
+              <img src="${item.image}" alt="${item.name}">
               <div class="info">
                 <h2>${item.name}</h2>
-                <p>SL: ${item.count}</p>
-                <div class="price">${(item.price * item.count).toLocaleString("vi-VN")}₫</div>
+                <p>Qty: ${item.count}</p>
+                <div class="price">${(item.price * item.count).toLocaleString("en-US")}₫</div>
               </div>
             </div>
           `
@@ -37,7 +37,7 @@ function renderPayment() {
         .join("")}
     </div>
     <div class="total">
-      Tổng: <span>${order.total}</span>
+      Total: <span>${order.total}</span>
     </div>
   `;
 }
@@ -45,12 +45,12 @@ function renderPayment() {
 async function completePayment() {
   const order = getPendingOrder();
   if (!order) {
-    alert("Không có đơn hàng nào để thanh toán.");
+    alert("No pending order found.");
     location.href = "cart.html";
     return;
   }
 
-  const confirmed = confirm(`Xác nhận thanh toán qua ${order.paymentMethod.toUpperCase()}?`);
+  const confirmed = confirm(`Confirm payment with ${order.paymentMethod.toUpperCase()}?`);
   if (!confirmed) {
     return;
   }
@@ -59,12 +59,12 @@ async function completePayment() {
     for (const item of order.cart) {
       const res = await fetch(`${API_URL}/${item.id}`);
       if (!res.ok) {
-        throw new Error("Không thể lấy dữ liệu sản phẩm");
+        throw new Error("Unable to fetch product data.");
       }
       const product = await res.json();
       const remain = product.stock - item.count;
       if (remain < 0) {
-        alert(`${product.name} không đủ hàng. Vui lòng giảm số lượng hoặc chọn sản phẩm khác.`);
+        alert(`${product.name} is out of stock. Please adjust your cart.`);
         location.href = "checkout.html";
         return;
       }
@@ -83,11 +83,11 @@ async function completePayment() {
     localStorage.removeItem("cart");
     sessionStorage.removeItem("pendingOrder");
 
-    alert("Thanh toán thành công! Đơn hàng của bạn đã được gửi.");
+    alert("Payment successful! Your order has been placed.");
     location.href = "index.html";
   } catch (error) {
     console.error(error);
-    alert("Lỗi trong quá trình thanh toán. Vui lòng thử lại sau.");
+    alert("Payment failed. Please try again later.");
   }
 }
 
