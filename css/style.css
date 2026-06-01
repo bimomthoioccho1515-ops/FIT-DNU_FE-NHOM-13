@@ -1079,9 +1079,9 @@ button:hover{
 *:hover {
     transform: none !important;
 }
-/* =========================================
-   FRESH IN - FIX BUTTON KHÔNG LỆCH
-========================================= */
+/* ===================================
+   FRESH IN - BUTTON CÁCH ĐỀU
+=================================== */
 
 #productGrid{
     display:grid !important;
@@ -1089,7 +1089,7 @@ button:hover{
     grid-template-columns:
     repeat(auto-fill,minmax(300px,1fr));
 
-    gap:28px;
+    gap:30px;
 
     padding:30px;
 
@@ -1100,9 +1100,10 @@ button:hover{
 /* CARD */
 
 #productGrid .product-card{
-    background:#fff;
 
-    border-radius:18px;
+    background:#c4c4c4;
+
+    border-radius:20px;
 
     overflow:hidden;
 
@@ -1110,22 +1111,21 @@ button:hover{
 
     flex-direction:column;
 
-    height:100%;
+    min-height:680px;
 
-    min-height:650px;
 }
 
 
 /* IMAGE */
 
 #productGrid .product-card img{
+
     width:100%;
 
     height:340px;
 
     object-fit:cover;
 
-    flex-shrink:0;
 }
 
 
@@ -1139,11 +1139,12 @@ button:hover{
 
     flex:1;
 
-    padding:20px;
+    padding:22px;
+
 }
 
 
-/* TÊN — KHÓA CAO 2 DÒNG */
+/* NAME */
 
 #productGrid .product-name{
 
@@ -1167,7 +1168,8 @@ button:hover{
 
     -webkit-box-orient:vertical;
 
-    margin-bottom:12px;
+    margin-bottom:18px;
+
 }
 
 
@@ -1181,7 +1183,8 @@ button:hover{
 
     font-weight:800;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
+
 }
 
 
@@ -1199,31 +1202,31 @@ button:hover{
 
     padding:10px 18px;
 
-    background:#d6ffe0;
+    border-radius:999px;
 
-    color:#008a3c;
+    background:#e7ffe7;
+
+    color:#1b8c41;
 
     font-weight:700;
 
-    border-radius:999px;
+    margin-bottom:28px; /* cách nút */
 
-    margin-bottom:20px;
 }
 
 
-/* VÙNG NÚT */
+/* KHU NÚT */
 
 #productGrid .product-actions{
 
     margin-top:auto;
 
-    width:100%;
+    padding-top:20px; /* tách khỏi chữ */
 
-    display:flex;
 }
 
 
-/* ADD TO BAG */
+/* BUTTON */
 
 #productGrid .add-to-bag{
 
@@ -1231,15 +1234,17 @@ button:hover{
 
     height:58px;
 
-    margin:0 !important;
-
     border:none;
 
     border-radius:14px;
 
-    background:#ff3b30 !important;
+    margin-top:12px;
 
-    color:white;
+    margin-bottom:10px;
+
+    background:#d8d8d8 !important;
+
+    color:#111;
 
     font-size:16px;
 
@@ -1247,25 +1252,24 @@ button:hover{
 
     cursor:pointer;
 
-    flex-shrink:0;
 }
 
+
+/* HOVER */
 
 #productGrid .add-to-bag:hover{
 
-    background:#e1281f !important;
+    background:#c7c7c7 !important;
+
 }
 
 
-/* XÓA CSS CŨ ĐÈ */
+/* XÓA MARGIN CŨ */
 
 #productGrid button{
-    margin-bottom:0 !important;
-}
 
+    margin:0 !important;
 
-#productGrid *:hover{
-    transform:none !important;
 }
 
 
@@ -1274,8 +1278,377 @@ button:hover{
 @media(max-width:768px){
 
 #productGrid{
-    grid-template-columns:1fr;
-    padding:16px;
+
+grid-template-columns:1fr;
+
+padding:16px;
+
 }
 
 }
+/* =========================
+PRODUCT GRID
+========================= */
+
+.product-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fill,
+minmax(300px,1fr)
+);
+
+gap:32px;
+
+padding:30px;
+
+}
+
+
+/* CARD */
+
+.product-card{
+
+background:#fff;
+
+border-radius:20px;
+
+overflow:hidden;
+
+display:flex;
+
+flex-direction:column;
+
+min-height:650px;
+
+}
+
+
+/* IMAGE */
+
+.product-image{
+
+height:340px;
+
+overflow:hidden;
+
+}
+
+
+.product-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+
+/* INFO */
+
+.product-info{
+
+padding:22px;
+
+display:flex;
+
+flex-direction:column;
+
+flex:1;
+
+}
+
+
+/* NAME */
+
+.product-name{
+
+font-size:18px;
+
+font-weight:700;
+
+color:#111;
+
+line-height:1.5;
+
+min-height:60px;
+
+margin-bottom:18px;
+
+}
+
+
+/* PRICE */
+
+.product-price{
+
+font-size:26px;
+
+font-weight:800;
+
+color:#111;
+
+margin-bottom:18px;
+
+}
+
+
+/* STOCK */
+
+.product-stock{
+
+background:#e8fff0;
+
+color:#118844;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+width:max-content;
+
+margin-bottom:26px;
+
+}
+
+
+/* BUTTON */
+
+.product-buttons{
+
+margin-top:auto;
+
+display:flex;
+
+gap:14px;
+
+}
+
+
+.btn-add{
+
+flex:1;
+
+height:58px;
+
+background:#d6d6d6;
+
+color:#111;
+
+font-weight:700;
+
+border:none;
+
+border-radius:14px;
+
+}
+
+
+.btn-detail{
+
+flex:1;
+
+height:58px;
+
+background:#111;
+
+color:#fff;
+
+border:none;
+
+border-radius:14px;
+
+}
+
+
+.btn-add:hover{
+
+background:#c2c2c2;
+
+}
+
+
+.btn-detail:hover{
+
+background:#333;
+
+}
+/* PRODUCT */
+
+#productGrid{
+
+display:grid !important;
+
+grid-template-columns:
+repeat(
+auto-fill,
+minmax(300px,1fr)
+);
+
+gap:28px;
+
+padding:30px;
+
+}
+
+
+.product-card{
+
+background:#444444;
+
+border-radius:20px;
+
+overflow:hidden;
+
+display:flex;
+
+flex-direction:column;
+
+min-height:680px;
+
+}
+
+
+.product-image{
+
+height:340px;
+
+}
+
+
+.product-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+cursor:pointer;
+
+}
+
+
+.product-info{
+
+padding:24px;
+
+display:flex;
+
+flex-direction:column;
+
+flex:1;
+
+}
+
+
+.product-name{
+
+color:#111;
+
+font-size:18px;
+
+font-weight:700;
+
+line-height:1.5;
+
+min-height:60px;
+
+margin-bottom:18px;
+
+}
+
+
+.product-price{
+
+color:#111;
+
+font-size:26px;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+}
+
+
+.product-stock{
+
+background:#e7ffe8;
+
+color:#13823f;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+width:max-content;
+
+margin-bottom:30px;
+
+}
+
+
+.product-buttons{
+
+margin-top:auto;
+
+display:flex;
+
+gap:14px;
+
+}
+
+
+.btn-add{
+
+flex:1;
+
+height:58px;
+
+background:#d9d9d9;
+
+color:#111;
+
+border:none;
+
+border-radius:14px;
+
+font-weight:700;
+
+}
+
+
+.btn-view{
+
+flex:1;
+
+height:58px;
+
+background:#111;
+
+color:#fff;
+
+border:none;
+
+border-radius:14px;
+
+}
+
+
+.btn-add:hover{
+
+background:#c7c7c7;
+
+}
+
+
+.btn-view:hover{
+
+background:#333;
+
+} 

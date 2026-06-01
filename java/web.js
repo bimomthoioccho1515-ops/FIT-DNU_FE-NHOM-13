@@ -218,50 +218,52 @@ return;
 
 }
 
-grid.innerHTML=
-list.map(p=>`
+grid.innerHTML =
+list.map(p => `
 
-<div
-class="card">
+<div class="product-card">
+
+<div class="product-image">
 
 <img
 src="${p.image}"
-
 onclick="
 location.href=
 'product.html?id=${p.id}'
 ">
 
-<div
-class="card-body">
+</div>
 
-<h3>
+
+<div class="product-info">
+
+<div class="product-name">
 
 ${p.name}
 
-</h3>
+</div>
 
-<div
-class="price">
+
+<div class="product-price">
 
 ${Number(
 p.price
-).toLocaleString(
-"en-US"
-)}₫
+).toLocaleString("vi-VN")}₫
 
 </div>
 
-<div
-class="stock-label">
 
-Stock:
-${p.stock}
+<div class="product-stock">
+
+Stock • ${p.stock}
 
 </div>
+
+
+<div class="product-buttons">
 
 <button
-
+class="btn-add"
 onclick="
 event.stopPropagation();
 
@@ -270,7 +272,19 @@ addToCart(
 )
 ">
 
-Add to bag
+Add To Bag
+
+</button>
+
+<button
+class="btn-view"
+
+onclick="
+location.href=
+'product.html?id=${p.id}'
+">
+
+View
 
 </button>
 
@@ -278,8 +292,9 @@ Add to bag
 
 </div>
 
-`).join("");
+</div>
 
+`).join("");
 }
 
 /* ================= FILTER ================= */
