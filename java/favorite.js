@@ -37,7 +37,7 @@ function renderFavorites() {
           <p>Quantity: <b>${item.count}</b></p>
         </div>
         <div class="cart-actions">
-          <button class="remove-btn" onclick="removeFavorite(${item.id})">Remove</button>
+          <button class="remove-btn" onclick="removeFavorite('${item.id}')">Remove</button>
         </div>
       </div>
     `;
@@ -47,7 +47,7 @@ function renderFavorites() {
 }
 
 function removeFavorite(id) {
-  const favorites = getFavorites().filter(item => item.id !== id);
+  const favorites = getFavorites().filter(item => String(item.id) !== String(id));
   saveFavorites(favorites);
   renderFavorites();
 }

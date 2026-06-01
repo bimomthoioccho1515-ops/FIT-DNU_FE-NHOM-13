@@ -146,6 +146,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
             <div class="stat-card">
 
                 <div class="card-icon">
+                    🧾
+                </div>
+
+                <h3>
+                    Orders
+                </h3>
+
+                <div
+                class="value"
+                id="totalOrders">
+                    0
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="card-icon">
                     ⚠️
                 </div>
 
@@ -191,6 +209,39 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
             </div>
 
+        </div>
+
+        <!-- ANALYSIS TABLES -->
+
+        <div class="analysis-section">
+            <div class="analysis-card">
+                <h3>Revenue Analysis</h3>
+                <table class="analysis-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Sold</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="revenueAnalysisBody"></tbody>
+                </table>
+            </div>
+            <div class="analysis-card">
+                <h3>Stocking Analysis</h3>
+                <table class="analysis-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockAnalysisBody"></tbody>
+                </table>
+            </div>
         </div>
 
         <!-- INVENTORY -->
@@ -254,6 +305,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                 </tbody>
 
             </table>
+
+            <div class="upload-panel">
+                <h3>Bulk Upload Products</h3>
+                <input id="productUploadInput" type="file" accept=".json,.csv" style="display:none" onchange="uploadProductsFromFile(event)">
+                <button class="add-btn" onclick="triggerUploadInput()">Upload JSON/CSV</button>
+                <p id="uploadStatus" style="margin-top:12px; color:#ccc; font-size:14px;"></p>
+            </div>
 
         </div>
 

@@ -7,7 +7,7 @@
         return;
     }
 
-    loginForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const username = document.getElementById('username').value.trim();
@@ -30,21 +30,40 @@
             return;
         }
 
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const user = users.find(u => u.username === username && u.password === password);
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(USER_API);
+                if (response.ok) {
+                    return await response.json();
+                }
+            } catch (error) {
+                console.warn('Unable to fetch users from MockAPI, falling back to local storage.');
+            }
+            return JSON.parse(localStorage.getItem('users') || '[]');
+        };
+
+        const users = await fetchUsers();
+        const normalize = value => typeof value === 'string' ? value.trim().toLowerCase() : '';
+        const loginKey = normalize(username);
+
+        const user = users.find(u => {
+            const storedUsername = normalize(u.username);
+            const storedEmail = normalize(u.email);
+            return (storedUsername === loginKey || storedEmail === loginKey) && u.password === password;
+        });
 
         if (user) {
             message.style.color = 'green';
             message.textContent = 'Login successful! Redirecting...';
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', 'user');
-            localStorage.setItem('currentUser', username);
+            localStorage.setItem('currentUser', user.username);
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 800);
         } else {
             message.style.color = 'red';
-            message.textContent = 'Invalid username or password!';
+            message.textContent = 'Invalid username, email or password!';
         }
     });
 

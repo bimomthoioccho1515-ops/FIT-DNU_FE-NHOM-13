@@ -1,4 +1,4 @@
-document.getElementById('registerForm').addEventListener('submit', function(event) {
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const username = document.getElementById('username').value.trim();
@@ -32,26 +32,62 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         return;
     }
 
-    // Check if username already exists (simple check, in real app use database)
-    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    if (existingUsers.some(user => user.username === username)) {
-        message.textContent = 'Username already exists.';
+    const fetchUsers = async () => {
+        try {
+            const response = await fetch(USER_API);
+            if (response.ok) {
+                return await response.json();
+            }
+        } catch (error) {
+            console.warn('Unable to fetch users from MockAPI, falling back to local storage.');
+        }
+        return JSON.parse(localStorage.getItem('users') || '[]');
+    };
+
+    const existingUsers = await fetchUsers();
+    const normalized = value => typeof value === 'string' ? value.trim().toLowerCase() : '';
+    const normalizedUsername = normalized(username);
+    const normalizedEmail = normalized(email);
+
+    if (existingUsers.some(user => normalized(user.username) === normalizedUsername || normalized(user.email) === normalizedEmail)) {
+        message.textContent = 'Username or email already exists.';
         return;
     }
 
-    // Save user (in real app, send to server)
     const newUser = { username, email, password };
-    existingUsers.push(newUser);
-    localStorage.setItem('users', JSON.stringify(existingUsers));
 
-    // Success
-    message.style.color = 'green';
-    message.textContent = 'Registration successful! Redirecting to login...';
+    try {
+        const response = await fetch(USER_API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        });
 
-    // Redirect to login after 2 seconds
-    setTimeout(() => {
-        window.location.href = 'login.html';
-    }, 2000);
+        if (!response.ok) {
+            throw new Error('Unable to register user on MockAPI');
+        }
+
+        localStorage.removeItem('users');
+        message.style.color = 'green';
+        message.textContent = 'Registration successful! Redirecting to login...';
+
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+    } catch (error) {
+        console.warn(error);
+        const fallbackUsers = JSON.parse(localStorage.getItem('users') || '[]');
+        fallbackUsers.push(newUser);
+        localStorage.setItem('users', JSON.stringify(fallbackUsers));
+        message.style.color = 'green';
+        message.textContent = 'Registration successful locally! Redirecting to login...';
+
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+    }
 });
 
 function isValidEmail(email) {
