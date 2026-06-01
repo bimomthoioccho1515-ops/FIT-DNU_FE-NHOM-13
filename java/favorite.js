@@ -9,7 +9,7 @@ function saveFavorites(favorites) {
 }
 
 function money(x) {
-  return x.toLocaleString("vi-VN") + "₫";
+  return x.toLocaleString("en-US") + "₫";
 }
 
 function renderFavorites() {
@@ -20,7 +20,7 @@ function renderFavorites() {
   let total = 0;
 
   if (!favorites.length) {
-    container.innerHTML = "<p>Bạn chưa có sản phẩm yêu thích.</p>";
+    container.innerHTML = "<p>You have no favorites yet.</p>";
     totalEl.innerText = "0₫";
     return;
   }
@@ -34,10 +34,10 @@ function renderFavorites() {
         <div class="cart-info">
           <h3>${item.name}</h3>
           <p>${money(item.price)}</p>
-          <p>Số lượng: <b>${item.count}</b></p>
+          <p>Quantity: <b>${item.count}</b></p>
         </div>
         <div class="cart-actions">
-          <button class="remove-btn" onclick="removeFavorite(${item.id})">Xóa</button>
+          <button class="remove-btn" onclick="removeFavorite(${item.id})">Remove</button>
         </div>
       </div>
     `;

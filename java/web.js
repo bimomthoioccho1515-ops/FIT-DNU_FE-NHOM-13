@@ -4,7 +4,6 @@ const API_URL =
 "https://6a1a846abc2f94475492525f.mockapi.io/products";
 
 const CART_KEY = "cart";
-const FAVORITE_KEY = "favorite";
 
 let products = [];
 
@@ -33,7 +32,7 @@ console.log(err);
 document.getElementById(
 "productGrid"
 ).innerHTML=
-"<h2>Lỗi tải dữ liệu</h2>";
+"<h2>Unable to load products</h2>";
 
 }
 
@@ -56,24 +55,6 @@ CART_KEY,
 JSON.stringify(cart)
 );
 
-updateCartCount();
-
-}
-
-function getFavorites(){
-  return JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
-}
-
-function saveFavorites(favorites){
-  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorites));
-  updateFavoriteCount();
-}
-
-function updateFavoriteCount(){
-  const el = document.getElementById("favoriteCount");
-  if(!el) return;
-  const favorites = getFavorites();
-  el.innerText = favorites.length;
 }
 
 /* ================= ADD ================= */
@@ -228,7 +209,7 @@ grid.innerHTML=`
 <div
 class="empty-state">
 
-Không tìm thấy sản phẩm
+No products found
 
 </div>
 
@@ -267,7 +248,7 @@ class="price">
 ${Number(
 p.price
 ).toLocaleString(
-"vi-VN"
+"en-US"
 )}₫
 
 </div>
@@ -275,7 +256,7 @@ p.price
 <div
 class="stock-label">
 
-Còn:
+Stock:
 ${p.stock}
 
 </div>
@@ -290,7 +271,7 @@ addToCart(
 )
 ">
 
-Thêm vào giỏ
+Add to bag
 
 </button>
 
@@ -448,8 +429,6 @@ window.onload=()=>{
 loadProducts();
 
 updateCartCount();
-
-updateFavoriteCount();
 
 updateAuthButton();
 

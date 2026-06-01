@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
 
@@ -43,7 +43,7 @@ defer>
 </div>
 
 <header class="main-header">
-  <a class="logo" style="font-family:akira;" href="index.html">FashionHub</a>
+  <a class="logo" href="index.html">FashionHub</a>
 
 <button
 class="back"
@@ -80,24 +80,24 @@ location.href='cart.html'
   <div class="form">
     <div class="form-left">
       <div class="field-group">
-        <label for="name">Họ tên</label>
-        <input id="name" placeholder="Họ tên">
+        <label for="name">Full name</label>
+        <input id="name" placeholder="Full name">
       </div>
       <div class="field-group">
-        <label for="phone">Số điện thoại</label>
-        <input id="phone" placeholder="Số điện thoại">
+        <label for="phone">Phone number</label>
+        <input id="phone" placeholder="Phone number">
       </div>
       <div class="field-group">
-        <label for="address">Địa chỉ giao hàng</label>
-        <textarea id="address" placeholder="Địa chỉ giao hàng"></textarea>
+        <label for="address">Shipping address</label>
+        <textarea id="address" placeholder="Shipping address"></textarea>
       </div>
       <div class="field-group">
-        <label for="paymentMethod">Cổng thanh toán</label>
+        <label for="paymentMethod">Payment method</label>
         <select id="paymentMethod">
-          <option value="">Chọn cổng thanh toán</option>
+          <option value="">Select a payment method</option>
           <option value="momo">Momo</option>
-          <option value="bank">Ngân hàng</option>
-          <option value="card">Thẻ nội địa</option>
+          <option value="bank">Bank transfer</option>
+          <option value="card">Card</option>
         </select>
       </div>
     </div>
@@ -113,10 +113,10 @@ location.href='cart.html'
           <span>Free</span>
         </div>
         <div class="summary-total">
-          <span>Tổng</span>
+          <span>Total</span>
           <strong id="summaryTotal">0₫</strong>
         </div>
-        <button onclick="placeOrder()">Thanh toán</button>
+        <button onclick="placeOrder()">Complete payment</button>
       </div>
     </aside>
   </div>

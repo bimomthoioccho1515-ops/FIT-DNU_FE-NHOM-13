@@ -15,13 +15,13 @@
 
         if (!username || !password) {
             message.style.color = 'red';
-            message.textContent = 'Vui lòng nhập tài khoản và mật khẩu.';
+            message.textContent = 'Please enter your username and password.';
             return;
         }
 
         if (username === 'admin' && password === 'admin') {
             message.style.color = 'green';
-            message.textContent = 'Đăng nhập thành công! Chuyển hướng...';
+            message.textContent = 'Login successful! Redirecting...';
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', 'admin');
             setTimeout(() => {
@@ -35,7 +35,7 @@
 
         if (user) {
             message.style.color = 'green';
-            message.textContent = 'Đăng nhập thành công! Chuyển hướng...';
+            message.textContent = 'Login successful! Redirecting...';
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', 'user');
             localStorage.setItem('currentUser', username);
@@ -44,7 +44,7 @@
             }, 800);
         } else {
             message.style.color = 'red';
-            message.textContent = 'Tài khoản hoặc mật khẩu không đúng!';
+            message.textContent = 'Invalid username or password!';
         }
     });
 

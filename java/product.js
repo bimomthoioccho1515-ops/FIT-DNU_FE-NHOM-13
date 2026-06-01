@@ -40,7 +40,7 @@ async function addToCart(id) {
     const res = await fetch(`${API_URL}/${id}`);
     const product = await res.json();
     if (!product.id) {
-      alert("Sản phẩm không tồn tại");
+      alert("Product not found");
       return;
     }
 
@@ -60,9 +60,9 @@ async function addToCart(id) {
     }
 
     saveCart(cart);
-    alert("Đã thêm vào giỏ");
+    alert("Added to bag");
   } catch {
-    alert("Lỗi thêm giỏ hàng");
+    alert("Failed to add to cart");
   }
 }
 
@@ -71,13 +71,13 @@ async function addToFavorite(id) {
     const res = await fetch(`${API_URL}/${id}`);
     const product = await res.json();
     if (!product.id) {
-      alert("Sản phẩm không tồn tại");
+      alert("Product not found");
       return;
     }
 
     const favorites = getFavorites();
     if (favorites.some(x => String(x.id) === String(id))) {
-      alert("Sản phẩm đã có trong mục Yêu thích");
+      alert("Product already in favorites");
       return;
     }
 
@@ -90,9 +90,9 @@ async function addToFavorite(id) {
     });
 
     saveFavorites(favorites);
-    alert("Đã thêm vào Yêu thích");
+    alert("Added to favorites");
   } catch {
-    alert("Lỗi thêm vào Yêu thích");
+    alert("Failed to add to favorites");
   }
 }
 
@@ -109,7 +109,7 @@ async function loadProduct() {
     const product = await res.json();
     if (!product.id) throw Error();
 
-    const description = product.description || 'Thiết kế đậm chất thể thao, phù hợp mọi hoạt động hằng ngày với độ êm ái và form ôm vừa vặn.';
+    const description = product.description || 'Sporty design with comfortable fit and modern performance details for everyday wear.';
 
     document.getElementById("productDetail").innerHTML = `
       <section class="detail-page">
@@ -130,14 +130,14 @@ async function loadProduct() {
           </div>
           <h1>${product.name}</h1>
           <div class="product-subtitle">${product.category} · ${product.color}</div>
-          <div class="price">${Number(product.price).toLocaleString("vi-VN")}₫</div>
+          <div class="price">${Number(product.price).toLocaleString("en-US")}₫</div>
           <div class="product-meta">
             <div class="meta-item">
-              <span>Màu</span>
+              <span>Color</span>
               <strong>${product.color}</strong>
             </div>
             <div class="meta-item">
-              <span>Kho</span>
+              <span>Stock</span>
               <strong>${product.stock}</strong>
             </div>
           </div>
@@ -155,7 +155,7 @@ async function loadProduct() {
         </div>
         <div class="detail-feature">
           <h3>Shipping & returns</h3>
-          <p>Miễn phí giao hàng cho đơn hàng từ 1 triệu, đổi trả trong 14 ngày. Đảm bảo chất lượng sản phẩm khi giao đến tay.</p>
+          <p>Free shipping on orders over 1,000,000₫, flexible 14-day returns, and careful delivery handling.</p>
         </div>
       </section>
       <section class="related-products">
@@ -166,7 +166,7 @@ async function loadProduct() {
 
     loadRelated(product.category, product.id);
   } catch {
-    document.getElementById("productDetail").innerHTML = `<h2>Không tìm thấy sản phẩm</h2>`;
+    document.getElementById("productDetail").innerHTML = `<h2>Product not found</h2>`;
   }
 }
 
@@ -184,13 +184,13 @@ async function loadRelated(category, currentId) {
         <img src="${p.image}" onclick="location.href='product.html?id=${p.id}'">
         <div class="card-body">
           <h3>${p.name}</h3>
-          <div class="price">${Number(p.price).toLocaleString("vi-VN")}₫</div>
-          <button onclick="event.stopPropagation(); addToCart('${p.id}')">Thêm vào giỏ</button>
+          <div class="price">${Number(p.price).toLocaleString("en-US")}₫</div>
+          <button onclick="event.stopPropagation(); addToCart('${p.id}')">Add to bag</button>
         </div>
       </div>
     `).join("");
   } catch {
-    console.log("Lỗi tải sản phẩm liên quan");
+    console.log("Failed to load related products");
   }
 }
 

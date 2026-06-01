@@ -28,7 +28,7 @@ function addToFavorite(id) {
 
   const favorites = getFavorites();
   if (favorites.some(x => String(x.id) === String(id))) {
-    alert("Sản phẩm đã có trong mục Yêu thích");
+    alert("Product already in favorites");
     return;
   }
 
@@ -41,14 +41,14 @@ function addToFavorite(id) {
   });
 
   saveFavorites(favorites);
-  alert("Đã thêm vào mục Yêu thích");
+  alert("Added to favorites");
   renderCartPage();
 }
 
 /* ================= FORMAT ================= */
 
 function money(x) {
-  return x.toLocaleString("vi-VN") + "₫";
+  return x.toLocaleString("en-US") + "₫";
 }
 
 /* ================= RENDER CART (COUNT GROUP) ================= */
@@ -84,12 +84,12 @@ function renderCartPage() {
         <div class="cart-info">
           <h3>${item.name}</h3>
           <p>${money(item.price)}</p>
-          <p>Số lượng: <b>${item.count}</b></p>
+          <p>Quantity: <b>${item.count}</b></p>
         </div>
 
         <div class="cart-actions">
           <button class="favorite-btn" onclick="addToFavorite(${item.id})">
-            ${isFavoriteItem ? '✓ Đã yêu thích' : '♥ Yêu thích'}
+            ${isFavoriteItem ? '✓ Favorited' : '♥ Favorite'}
           </button>
           <button class="remove-btn" onclick="removeItem(${item.id})">Delete</button>
         </div>

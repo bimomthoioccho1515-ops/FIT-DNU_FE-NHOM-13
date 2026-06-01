@@ -13,29 +13,29 @@ document.getElementById('registerForm').addEventListener('submit', function(even
 
     // Validation
     if (username.length < 3) {
-        message.textContent = 'Tài khoản phải có ít nhất 3 ký tự!';
+        message.textContent = 'Username must be at least 3 characters.';
         return;
     }
 
     if (!isValidEmail(email)) {
-        message.textContent = 'Email không hợp lệ!';
+        message.textContent = 'Please enter a valid email.';
         return;
     }
 
     if (password.length < 6) {
-        message.textContent = 'Mật khẩu phải có ít nhất 6 ký tự!';
+        message.textContent = 'Password must be at least 6 characters.';
         return;
     }
 
     if (password !== confirmPassword) {
-        message.textContent = 'Mật khẩu xác nhận không khớp!';
+        message.textContent = 'Passwords do not match.';
         return;
     }
 
     // Check if username already exists (simple check, in real app use database)
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
     if (existingUsers.some(user => user.username === username)) {
-        message.textContent = 'Tài khoản đã tồn tại!';
+        message.textContent = 'Username already exists.';
         return;
     }
 
@@ -46,7 +46,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
 
     // Success
     message.style.color = 'green';
-    message.textContent = 'Đăng ký thành công! Chuyển hướng đến đăng nhập...';
+    message.textContent = 'Registration successful! Redirecting to login...';
 
     // Redirect to login after 2 seconds
     setTimeout(() => {
