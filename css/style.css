@@ -656,7 +656,6 @@ nav a:hover,
   height:100%;
   object-fit:cover;
   display:block;
-  transition:transform .4s ease;
 }
 
 .feature-card:hover img{
@@ -1045,5 +1044,17 @@ button:hover{
 
 .nav-links .dropbtn:hover {
     opacity: 0.8;
+}
+
+/* Disable hover pop-up animations globally */
+*,
+*::before,
+*::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+*:hover {
+    transform: none !important;
 }
   

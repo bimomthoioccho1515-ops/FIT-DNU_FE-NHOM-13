@@ -13,12 +13,28 @@ function renderPayment() {
   }
 
   const box = document.getElementById("paymentSummary");
+  const itemCount = order.cart.reduce((sum, item) => sum + item.count, 0);
+  const totalPrice = order.cart.reduce((sum, item) => sum + item.price * item.count, 0);
+  const formattedTotal = totalPrice.toLocaleString("en-US") + "₫";
+
   box.innerHTML = `
     <div class="order-info">
-      <p><strong>Name:</strong> ${order.name}</p>
-      <p><strong>Phone:</strong> ${order.phone}</p>
-      <p><strong>Shipping address:</strong> ${order.address}</p>
-      <p><strong>Payment method:</strong> ${order.paymentMethod.toUpperCase()}</p>
+      <div>
+        <p class="label">Name</p>
+        <p>${order.name}</p>
+      </div>
+      <div>
+        <p class="label">Phone</p>
+        <p>${order.phone}</p>
+      </div>
+      <div>
+        <p class="label">Shipping address</p>
+        <p>${order.address}</p>
+      </div>
+      <div>
+        <p class="label">Payment method</p>
+        <p>${order.paymentMethod.toUpperCase()}</p>
+      </div>
     </div>
     <div class="order-items">
       ${order.cart
@@ -29,17 +45,34 @@ function renderPayment() {
               <div class="info">
                 <h2>${item.name}</h2>
                 <p>Qty: ${item.count}</p>
-                <div class="price">${(item.price * item.count).toLocaleString("en-US")}₫</div>
               </div>
+              <div class="price">${(item.price * item.count).toLocaleString("en-US")}₫</div>
             </div>
           `
         )
         .join("")}
     </div>
-    <div class="total">
-      Total: <span>${order.total}</span>
+    <div class="order-footer">
+      <div>
+        <span>Subtotal</span>
+        <strong>${formattedTotal}</strong>
+      </div>
+      <div>
+        <span>Delivery</span>
+        <strong>Free</strong>
+      </div>
+      <div class="order-total">
+        <span>Total</span>
+        <strong>${formattedTotal}</strong>
+      </div>
     </div>
   `;
+
+  const itemCountEl = document.getElementById("itemCount");
+  if (itemCountEl) itemCountEl.innerText = `${itemCount}`;
+
+  const summaryTotal = document.getElementById("summaryTotal");
+  if (summaryTotal) summaryTotal.innerText = formattedTotal;
 }
 
 async function completePayment() {

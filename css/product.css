@@ -308,3 +308,15 @@ body{
     height:80px;
   }
 }
+
+/* Disable hover pop-up animations globally */
+*,
+*::before,
+*::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+*:hover {
+    transform: none !important;
+}

@@ -189,6 +189,18 @@ body{
     background:#444;
 }
 
+/* Disable hover pop-up animations globally */
+*,
+*::before,
+*::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+*:hover {
+    transform: none !important;
+}
+
 /* TABLE */
 
 .inventory-table{
@@ -257,8 +269,6 @@ body{
 .delete-btn{
     background:#dc3545;
 }
-
-/* MODAL */
 
 .modal{
     display:none;

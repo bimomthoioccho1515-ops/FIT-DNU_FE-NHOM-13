@@ -15,13 +15,13 @@
   <button class="back" onclick="location.href='checkout.html'">← Back to Checkout</button>
 </header>
 
-<section class="checkout">
+<section class="checkout payment-page">
   <div class="checkout-header">
     <div class="section-title">
       <span>02</span>
       <div>
         <h1>Payment</h1>
-        <p>Review your order and complete checkout.</p>
+        <p>Confirm your details and complete your order.</p>
       </div>
     </div>
     <div class="steps">
@@ -31,22 +31,36 @@
     </div>
   </div>
 
-  <div id="paymentSummary"></div>
-
-  <div class="form">
-    <div class="form-left">
-      <div class="payment-note">
-        Please confirm your payment method and submit the order. Your order will be processed immediately after confirmation.
+  <div class="payment-grid">
+    <div class="payment-left">
+      <div class="panel panel-soft">
+        <div class="panel-head">
+          <div>
+            <span class="panel-label">Delivery details</span>
+            <h2>Review order</h2>
+          </div>
+          <div class="panel-meta">Secure payment</div>
+        </div>
+        <div id="paymentSummary"></div>
       </div>
     </div>
-    <aside class="form-right">
-      <div class="summary-panel">
-        <div class="summary-title">Order Summary</div>
-        <div class="summary-line small">
-          <span>Payment details</span>
-          <span>Secure checkout</span>
+
+    <aside class="payment-right">
+      <div class="panel panel-dark">
+        <div class="summary-title">Order summary</div>
+        <div class="summary-line">
+          <span>Items</span>
+          <span id="itemCount">0</span>
         </div>
-        <button onclick="completePayment()">Complete Payment</button>
+        <div class="summary-line">
+          <span>Delivery</span>
+          <span>Free</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <strong id="summaryTotal">0₫</strong>
+        </div>
+        <button onclick="completePayment()">Pay securely</button>
       </div>
     </aside>
   </div>

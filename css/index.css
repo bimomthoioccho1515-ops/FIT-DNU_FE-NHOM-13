@@ -117,3 +117,15 @@
     padding: 18px;
   }
 }
+
+/* Disable hover pop-up animations globally */
+*,
+*::before,
+*::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+*:hover {
+    transform: none !important;
+}
