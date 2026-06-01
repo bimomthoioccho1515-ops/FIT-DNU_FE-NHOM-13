@@ -40,7 +40,7 @@ async function addToCart(id) {
     const res = await fetch(`${API_URL}/${id}`);
     const product = await res.json();
     if (!product.id) {
-      alert("Tính năng này đang trong quá trình phát triển. Vui lòng quay lại sau.");
+      alert("Product not found");
       return;
     }
 
@@ -166,7 +166,7 @@ async function loadProduct() {
 
     loadRelated(product.category, product.id);
   } catch {
-    document.getElementById("productDetail").innerHTML = `<h2>Product not found</h2>`;
+    document.getElementById("productDetail").innerHTML = `<h2>Tính năng này đang trong quá trình phát triển, vui lòng quay lại sau.</h2>`;
   }
 }
 
