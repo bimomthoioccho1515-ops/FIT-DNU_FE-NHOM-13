@@ -18,9 +18,9 @@
   justify-content: center;
   min-height: 48px;
   min-width: 110px;
-  background: none;
-  border: none;
-  color: #111;
+  background: #111;
+  border: 1px solid #222;
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -30,7 +30,7 @@
 }
 
 .dropbtn:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: #222;
 }
 
 .mega-dropdown-content {
@@ -38,9 +38,9 @@
   top: 70px;
   left: 0;
   width: 100vw;
-  background: #fff;
+  background: #111;
   padding: 28px 40px 32px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   z-index: 999;
   display: grid;
   grid-template-columns: repeat(5, minmax(180px, 1fr));
@@ -73,29 +73,21 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #111;
+  color: #fff;
 }
 
 .mega-dropdown-content a {
-  color: #666;
+  color: #ddd;
   font-weight: 700;
   text-decoration: none;
   padding: 10px 12px;
   border-radius: 14px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
   font-size: 14px;
 }
 
 .mega-dropdown-content a:hover {
-  background: #f7f7f7;
-  transform: translateX(4px);
-}
-
-.mega-dropdown:hover .mega-dropdown-content {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  background: #222;
 }
 
 @media (max-width: 1180px) {

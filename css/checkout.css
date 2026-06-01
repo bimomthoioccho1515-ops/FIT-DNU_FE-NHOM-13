@@ -6,8 +6,9 @@
 }
 
 body{
-  background:#f4f5f8;
+  background:#0e0e0e;
   font-family:'Poppins',sans-serif;
+  color:#f5f5f5;
 }
 
 .top-navbar{
@@ -17,26 +18,25 @@ body{
   justify-content:flex-end;
   gap:12px;
   padding:0 40px;
-  background:#f4f5f8;
-  border-bottom:1px solid #e5e5e5;
+  background:#111;
+  border-bottom:1px solid #222;
 }
 
 .top-navbar a{
   display:inline-block;
   text-decoration:none;
-  color:#111;
+  color:#eee;
   font-size:13px;
   font-weight:500;
   transition:0.3s;
 }
 
 .top-navbar a:hover{
-  opacity:0.6;
-  transform:translateY(-1px);
+  opacity:0.8;
 }
 
 .top-navbar span{
-  color:#999;
+  color:#777;
   font-size:12px;
 }
 
@@ -46,15 +46,15 @@ body{
   justify-content:space-between;
   align-items:center;
   padding:0 40px;
-  background:#fff;
+  background:#000;
   position:sticky;
   top:0;
   z-index:9999;
-  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+  box-shadow:0 2px 20px rgba(255,255,255,0.06);
 }
 
 .logo{
-  color:#111;
+  color:#fff;
   text-decoration:none;
   font-family:'Poppins', sans-serif;
   font-size:28px;
@@ -65,8 +65,8 @@ body{
 .back{
   padding:12px 20px;
   border:none;
-  background:black;
-  color:white;
+  background:#fff;
+  color:#111;
   border-radius:999px;
   cursor:pointer;
 }
@@ -98,18 +98,19 @@ body{
   align-items:center;
   justify-content:center;
   border-radius:50%;
-  background:#111;
-  color:#fff;
+  background:#fff;
+  color:#111;
   font-weight:700;
 }
 
 .section-title h1{
   font-size:34px;
   margin-bottom:6px;
+  color:#fff;
 }
 
 .section-title p{
-  color:#555;
+  color:#aaa;
   font-size:14px;
 }
 
@@ -122,15 +123,15 @@ body{
 .step{
   padding:12px 18px;
   border-radius:999px;
-  background:#f5f5f5;
-  color:#111;
+  background:#222;
+  color:#fff;
   font-size:13px;
   font-weight:600;
 }
 
 .step.active{
-  background:#111;
-  color:#fff;
+  background:#fff;
+  color:#111;
 }
 
 #checkoutItems{
@@ -139,12 +140,13 @@ body{
 }
 
 .item{
-  background:white;
+  background:#111;
   padding:24px;
   display:flex;
   gap:24px;
   align-items:center;
-  box-shadow:0 18px 45px rgba(0,0,0,0.05);
+  box-shadow:0 18px 45px rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.06);
 }
 
 .item img{
@@ -160,17 +162,18 @@ body{
 .info h2{
   font-size:20px;
   margin-bottom:10px;
+  color:#fff;
 }
 
 .info p{
-  color:#555;
+  color:#bbb;
   margin-bottom:12px;
 }
 
 .price{
   font-size:22px;
   font-weight:700;
-  color:#111;
+  color:#fff;
 }
 
 .form{
@@ -182,10 +185,11 @@ body{
 
 .form-left,
 .form-right{
-  background:white;
+  background:#111;
   padding:40px;
   border-radius:24px;
-  box-shadow:0 18px 45px rgba(0,0,0,0.05);
+  box-shadow:0 18px 45px rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.06);
 }
 
 .field-group{
@@ -197,7 +201,7 @@ body{
 
 .field-group label{
   font-size:13px;
-  color:#777;
+  color:#aaa;
   text-transform:uppercase;
   letter-spacing:0.08em;
 }
@@ -207,10 +211,12 @@ textarea,
 select{
   width:100%;
   padding:18px;
-  border:1px solid #e5e5e5;
+  border:1px solid #222;
   border-radius:16px;
   outline:none;
   font-size:15px;
+  background:#121212;
+  color:#f5f5f5;
 }
 
 textarea{
@@ -228,6 +234,7 @@ textarea{
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:0.08em;
+  color:#fff;
 }
 
 .summary-line,
@@ -239,7 +246,7 @@ textarea{
 }
 
 .summary-line{
-  color:#555;
+  color:#bbb;
   font-size:15px;
 }
 
@@ -251,22 +258,24 @@ textarea{
 .summary-total{
   font-size:26px;
   font-weight:800;
+  color:#fff;
 }
 
 .form-right button{
   width:100%;
   padding:18px;
-  background:black;
-  color:white;
+  background:#fff;
+  color:#111;
   border:none;
   border-radius:999px;
   cursor:pointer;
   text-transform:uppercase;
   letter-spacing:0.08em;
+  font-weight:700;
 }
 
 .form-right button:hover{
-  background:#333;
+  background:#f1f1f1;
 }
 
 .payment-page .payment-grid{
@@ -284,9 +293,10 @@ textarea{
 }
 
 .panel{
-  background:#fff;
+  background:#111;
   border-radius:28px;
-  box-shadow:0 24px 60px rgba(0,0,0,0.08);
+  box-shadow:0 24px 60px rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.06);
 }
 
 .panel-soft{
@@ -317,6 +327,7 @@ textarea{
 .panel-head h2{
   font-size:28px;
   margin:0;
+  color:#fff;
 }
 
 .panel-meta{
@@ -335,9 +346,9 @@ textarea{
 
 .order-info div{
   padding:20px;
-  border:1px solid #f1f1f1;
+  border:1px solid #222;
   border-radius:18px;
-  background:#fafafa;
+  background:#111;
 }
 
 .order-info .label{
@@ -361,7 +372,8 @@ textarea{
   align-items:center;
   padding:20px;
   border-radius:22px;
-  border:1px solid #f1f1f1;
+  border:1px solid #222;
+  background:#111;
 }
 
 .order-items .item img{
@@ -374,17 +386,18 @@ textarea{
 .order-items .item .info h2{
   font-size:18px;
   margin:0 0 8px;
+  color:#fff;
 }
 
 .order-items .item .info p{
   margin:0;
-  color:#777;
+  color:#ccc;
 }
 
 .order-items .item .price{
   font-size:18px;
   font-weight:700;
-  color:#111;
+  color:#fff;
 }
 
 .order-footer{
@@ -397,13 +410,13 @@ textarea{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  color:#555;
+  color:#bbb;
 }
 
 .order-total{
   font-size:20px;
   font-weight:800;
-  color:#111;
+  color:#fff;
 }
 
 .payment-page .panel-dark .summary-title{
@@ -470,41 +483,4 @@ textarea{
 
 *:hover {
     transform: none !important;
-}
-
-@media (max-width:1000px) {
-  .checkout{
-    padding:40px 20px;
-  }
-  .checkout-header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .form{
-    grid-template-columns:1fr;
-  }
-  .item{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .item img{
-    width:100%;
-    height:260px;
-  }
-  .form-right{
-    position:static;
-  }
-}
-
-@media (max-width:680px) {
-  .main-header,
-  .top-navbar{
-    padding:0 20px;
-  }
-  .section-title h1{
-    font-size:28px;
-  }
-  .steps{
-    width:100%;
-  }
 }
