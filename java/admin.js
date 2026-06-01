@@ -54,11 +54,7 @@ document.getElementById("totalInventory").innerText = totalInventory;
 document.getElementById("totalSold").innerText = totalSold;
 document.getElementById("lowStock").innerText = lowStock;
 document.getElementById("totalRevenue").innerText =
-revenue.toLocaleString("vi-VN") + "₫";
-
-}
-
-/* ================= TABLE ================= */
+  revenue.toLocaleString("en-US") + "₫";
 
 function renderTable(){
 
@@ -74,7 +70,7 @@ tbody.innerHTML = products.map(p=>`
 
 <td>${p.category}</td>
 
-<td>${Number(p.price).toLocaleString("vi-VN")}₫</td>
+<td>${Number(p.price).toLocaleString("en-US")}₫</td>
 
 <td>${p.stock}</td>
 

@@ -1,0 +1,119 @@
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 80px;
+}
+
+.mega-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 8px;
+}
+
+.dropbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 110px;
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dropbtn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.mega-dropdown-content {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  background: #fff;
+  padding: 28px 40px 32px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  z-index: 999;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: 24px;
+  overflow-y: auto;
+  transform: translateY(-20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mega-dropdown:hover .mega-dropdown-content,
+.mega-dropdown-content:hover {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mega-dropdown-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mega-dropdown-column h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #111;
+}
+
+.mega-dropdown-content a {
+  color: #666;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 14px;
+}
+
+.mega-dropdown-content a:hover {
+  background: #f7f7f7;
+  transform: translateX(4px);
+}
+
+.mega-dropdown:hover .mega-dropdown-content {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (max-width: 1180px) {
+  .mega-dropdown-content {
+    width: 100vw;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .nav-links {
+    margin-left: 20px;
+  }
+  .mega-dropdown-content {
+    position: fixed;
+    width: 100vw;
+    border-radius: 0;
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+}

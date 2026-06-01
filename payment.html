@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payment</title>
+<link rel="stylesheet" href="./css/checkout.css">
+<script src="./java/payment.js" defer></script>
+</head>
+
+<body>
+<header class="main-header">
+  <a class="logo" href="index.html">FashionHub</a>
+  <button class="back" onclick="location.href='checkout.html'">← Back to Checkout</button>
+</header>
+
+<section class="checkout">
+  <div class="checkout-header">
+    <div class="section-title">
+      <span>02</span>
+      <div>
+        <h1>Payment</h1>
+        <p>Review your order and complete checkout.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">Shipping</div>
+      <div class="step active">Payment</div>
+      <div class="step">Complete</div>
+    </div>
+  </div>
+
+  <div id="paymentSummary"></div>
+
+  <div class="form">
+    <div class="form-left">
+      <div class="payment-note">
+        Please confirm your payment method and submit the order. Your order will be processed immediately after confirmation.
+      </div>
+    </div>
+    <aside class="form-right">
+      <div class="summary-panel">
+        <div class="summary-title">Order Summary</div>
+        <div class="summary-line small">
+          <span>Payment details</span>
+          <span>Secure checkout</span>
+        </div>
+        <button onclick="completePayment()">Complete Payment</button>
+      </div>
+    </aside>
+  </div>
+</section>
+</body>
+
+</html>

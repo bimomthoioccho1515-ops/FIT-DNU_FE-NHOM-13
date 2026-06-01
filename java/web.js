@@ -32,7 +32,7 @@ console.log(err);
 document.getElementById(
 "productGrid"
 ).innerHTML=
-"<h2>Lỗi tải dữ liệu</h2>";
+"<h2>Unable to load products</h2>";
 
 }
 
@@ -209,7 +209,7 @@ grid.innerHTML=`
 <div
 class="empty-state">
 
-Không tìm thấy sản phẩm
+No products found
 
 </div>
 
@@ -248,7 +248,7 @@ class="price">
 ${Number(
 p.price
 ).toLocaleString(
-"vi-VN"
+"en-US"
 )}₫
 
 </div>
@@ -256,7 +256,7 @@ p.price
 <div
 class="stock-label">
 
-Còn:
+Stock:
 ${p.stock}
 
 </div>
@@ -271,7 +271,7 @@ addToCart(
 )
 ">
 
-Thêm vào giỏ
+Add to bag
 
 </button>
 

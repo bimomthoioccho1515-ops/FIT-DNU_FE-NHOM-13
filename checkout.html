@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
 
@@ -18,6 +18,10 @@ Checkout
 rel="stylesheet"
 href="./css/checkout.css">
 
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
 <script
 src="./java/checkout.js"
 defer>
@@ -26,14 +30,20 @@ defer>
 </head>
 
 <body>
+    
+
+<div class="top-navbar">
+  <nav>
+    <a href="#">Find a Store</a>
+    <span>|</span>
+    <a href="#">Help</a>
+    <span>|</span>
+    <a href="login.html" id="authBtn" onclick="handleAuthAction()">Login</a>
+  </nav>
+</div>
 
 <header class="main-header">
-
-<div class="logo">
-
-FashionHub
-
-</div>
+  <a class="logo" href="index.html">FashionHub</a>
 
 <button
 class="back"
@@ -50,60 +60,66 @@ location.href='cart.html'
 
 
 <section class="checkout">
+  <div class="checkout-header">
+    <div class="section-title">
+      <span>01</span>
+      <div>
+        <h1>Checkout</h1>
+        <p>Hoàn tất đơn hàng trong vài bước đơn giản.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step active">Shipping</div>
+      <div class="step">Payment</div>
+      <div class="step">Review</div>
+    </div>
+  </div>
 
-<h1>
+  <div id="checkoutItems"></div>
 
-CHECKOUT
-
-</h1>
-
-<div
-id="checkoutItems">
-
-</div>
-
-
-<div class="form">
-
-<input
-id="name"
-placeholder=
-"Họ tên">
-
-<input
-id="phone"
-placeholder=
-"Số điện thoại">
-
-<textarea
-id="address"
-placeholder=
-"Địa chỉ giao hàng">
-</textarea>
-
-<div
-class="total">
-
-Tổng:
-
-<span
-id="total">
-
-0₫
-
-</span>
-
-</div>
-
-<button
-onclick="placeOrder()">
-
-ĐẶT HÀNG
-
-</button>
-
-</div>
-
+  <div class="form">
+    <div class="form-left">
+      <div class="field-group">
+        <label for="name">Full name</label>
+        <input id="name" placeholder="Full name">
+      </div>
+      <div class="field-group">
+        <label for="phone">Phone number</label>
+        <input id="phone" placeholder="Phone number">
+      </div>
+      <div class="field-group">
+        <label for="address">Shipping address</label>
+        <textarea id="address" placeholder="Shipping address"></textarea>
+      </div>
+      <div class="field-group">
+        <label for="paymentMethod">Payment method</label>
+        <select id="paymentMethod">
+          <option value="">Select a payment method</option>
+          <option value="momo">Momo</option>
+          <option value="bank">Bank transfer</option>
+          <option value="card">Card</option>
+        </select>
+      </div>
+    </div>
+    <aside class="form-right">
+      <div class="summary-panel">
+        <div class="summary-title">Tóm tắt đơn hàng</div>
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="total">0₫</span>
+        </div>
+        <div class="summary-line small">
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <strong id="summaryTotal">0₫</strong>
+        </div>
+        <button onclick="placeOrder()">Complete payment</button>
+      </div>
+    </aside>
+  </div>
 </section>
 
 </body>

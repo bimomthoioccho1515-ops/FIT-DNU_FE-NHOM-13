@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
 
@@ -21,6 +21,11 @@ href="./css/style.css"
 >
 
 <link
+rel="stylesheet"
+href="./css/index.css"
+>
+
+<link
 href=
 "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 rel="stylesheet"
@@ -28,6 +33,10 @@ rel="stylesheet"
 
 <script
 src="./java/web.js"
+defer>
+</script>
+<script
+src="./java/index.js"
 defer>
 </script>
 
@@ -82,36 +91,46 @@ FashionHub
 
 
 <div class="nav-links">
-
-
-<a
-href="#"
-onclick="setCategory('Quần áo')"
->
-Clothing
-</a>
-
-<a
-href="#"
-onclick="setCategory('Túi xách')"
->
-Bags
-</a>
-
-<a
-href="#"
-onclick="setCategory('Giày')"
->
-Shoes
-</a>
-
-<a
-href="#"
-onclick="setCategory('Phụ kiện')"
->
-Accessories
-</a>
-
+  <div class="mega-dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="mega-dropdown-content">
+      <div class="mega-dropdown-column">
+        <h3>Feature</h3>
+        <a href="product.html?category=feature&item=latest">Latest drops</a>
+        <a href="product.html?category=feature&item=bestsellers">Best sellers</a>
+        <a href="product.html?category=feature&item=sale">Sale</a>
+        <a href="product.html?category=feature&item=new">New arrivals</a>
+      </div>
+      <div class="mega-dropdown-column">
+        <h3>Shoes</h3>
+        <a href="product.html?category=shoes&item=sneakers">Sneakers</a>
+        <a href="product.html?category=shoes&item=running">Running</a>
+        <a href="product.html?category=shoes&item=basketball">Basketball</a>
+        <a href="product.html?category=shoes&item=boots">Boots</a>
+      </div>
+      <div class="mega-dropdown-column">
+        <h3>Clothing</h3>
+        <a href="product.html?category=clothing&item=tops">Tops</a>
+        <a href="product.html?category=clothing&item=outerwear">Outerwear</a>
+        <a href="product.html?category=clothing&item=bottoms">Bottoms</a>
+        <a href="product.html?category=clothing&item=sets">Sets</a>
+      </div>
+      <div class="mega-dropdown-column">
+        <h3>Shop by Sport</h3>
+        <a href="product.html?category=sport&item=running">Running</a>
+        <a href="product.html?category=sport&item=football">Football</a>
+        <a href="product.html?category=sport&item=training">Training</a>
+        <a href="product.html?category=sport&item=outdoor">Outdoor</a>
+      </div>
+      <div class="mega-dropdown-column">
+        <h3>Accessories</h3>
+        <a href="product.html?category=accessories&item=bags">Bags</a>
+        <a href="product.html?category=accessories&item=hats">Hats</a>
+        <a href="product.html?category=accessories&item=sunglasses">Sunglasses</a>
+        <a href="product.html?category=accessories&item=watches">Watches</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -134,10 +153,16 @@ placeholder=
 
 
 <button
-class="header-icon"
+class="header-icon favorite-btn"
+onclick="location.href='favorite.html'"
 >
 
-♡
+❤︎⁠
+
+<span
+id="favoriteCount"
+class="icon-badge"
+>0</span>
 
 </button>
 
@@ -156,12 +181,8 @@ onclick=
 
 <span
 id="cartCount"
-class="cart-count"
->
-
-0
-
-</span>
+class="icon-badge"
+>0</span>
 
 </button>
 
@@ -249,7 +270,9 @@ class="featured"
 
 style="
 font-family:
-lemonmilk;
+akira;
+font-weight:800;
+font-size: 20px;
 "
 
 >
@@ -277,13 +300,14 @@ class="featured-overlay"
 
 <div
 class="featured-tag"
+style="font-family:akira;font-weight:700;font-size:16px;"
 >
 
 NEW SEASON
 
 </div>
 
-<h2>
+<h2 style="font-family:akira;font-weight:700;font-size:24px;margin-bottom:5px;">
 
 Summer Collection
 
@@ -291,7 +315,7 @@ Summer Collection
 
 <p>
 
-Discover now
+Discover now!
 
 </p>
 
@@ -320,13 +344,14 @@ class="featured-overlay"
 
 <div
 class="featured-tag"
+style="font-family:akira;font-weight:700;font-size:16px;"
 >
 
 URBAN
 
 </div>
 
-<h2>
+<h2 style="font-family:akira;font-weight:700;font-size:24px;margin-bottom:5px;">
 
 Street Style
 
@@ -334,7 +359,7 @@ Street Style
 
 <p>
 
-Explore collection
+Explore collection.
 
 </p>
 
@@ -356,8 +381,10 @@ EXPLORE
 <h1
 class="trending"
 style="
-font-family:
-lemonmilk;
+font-family:akira;
+FONT-WEIGHT:800;
+font-size: 20px;
+MARGIN-BOTTOM: 5PX; 
 "
 >
 
@@ -368,18 +395,36 @@ Trending
 <div
 class="trendingcard"
 >
-
-<img
-src="./stuff/trending1.avif"
->
-
-<img
-src="./stuff/trending2.webp"
->
-
-<img
-src="./stuff/trending3.webp"
->
+  <div class="trending-item">
+    <img
+    src="./stuff/trending1.avif"
+    >
+    <div class="trending-info">
+      <span>New Arrival</span>
+      <h4>Urban Motion</h4>
+      <p>Fresh styles and bold silhouettes.</p>
+    </div>
+  </div>
+  <div class="trending-item">
+    <img
+    src="./stuff/trending2.webp"
+    >
+    <div class="trending-info">
+      <span>Top Pick</span>
+      <h4>Sport Ready</h4>
+      <p>Performance gear for every day.</p>
+    </div>
+  </div>
+  <div class="trending-item">
+    <img
+    src="./stuff/trending3.webp"
+    >
+    <div class="trending-info">
+      <span>Editor's Choice</span>
+      <h4>Essential Wear</h4>
+      <p>Minimal looks with maximum comfort.</p>
+    </div>
+  </div>
 
 </div>
 
@@ -390,107 +435,9 @@ src="./stuff/trending3.webp"
 class="products"
 >
 
-<div
-class="product-controls"
->
-
-<div
-class="categories"
->
-
-<button
-
-class=
-"category-btn active"
-
-data-category=
-"all"
-
-onclick=
-"setCategory('all')"
-
->
-
-All
-
-</button>
-
-
-<button
-
-class=
-"category-btn"
-
-data-category=
-"Quần áo"
-
-onclick=
-"setCategory('Quần áo')"
-
->
-
-Clothing
-
-</button>
-
-
-<button
-
-class=
-"category-btn"
-
-data-category=
-"Túi xách"
-
-onclick=
-"setCategory('Túi xách')"
-
->
-
-Bags
-
-</button>
-
-
-<button
-
-class=
-"category-btn"
-
-data-category=
-"Giày"
-
-onclick=
-"setCategory('Giày')"
-
->
-
-Shoes
-
-</button>
-
-
-<button
-
-class=
-"category-btn"
-
-data-category=
-"Phụ kiện"
-
-onclick=
-"setCategory('Phụ kiện')"
-
->
-
-Accessories
-
-</button>
-
+<div class="fresh-in">
+  <h2 style="font-family:akira;font-weight:700;font-size:24px;margin-bottom:5px;">Fresh In</h2>
 </div>
-
-</div>
-
 
 <div
 id="productGrid"
