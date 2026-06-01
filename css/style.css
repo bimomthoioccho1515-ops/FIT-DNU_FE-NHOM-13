@@ -265,12 +265,6 @@
 .login-btn:hover{
     background:#5a5a5a;
 }
-.featured{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(220px,1fr));
-    gap:18px;
-    padding:30px;
-}
 
 /* DROPDOWN */
 
@@ -465,7 +459,7 @@
 
 .featured-card img{
     width:100%;
-    height:100;
+    height:100%;
 
     object-fit:cover;
 
@@ -535,27 +529,6 @@ body {
 
 body{
   background:#f5f5f5;
-}
-
-header {
-  position: -webkit-sticky;
-  position: sticky;       
-  top: 0;                  
-  z-index: 10000;        
-  background: #111;
-  color: white;
-  padding: 20px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.logo{
-  font-size:30px;
-  font-weight:bold;
-  color:#000000;
 }
 
 .navbar{

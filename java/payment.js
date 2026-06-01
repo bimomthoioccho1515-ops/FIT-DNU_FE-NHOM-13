@@ -1,4 +1,4 @@
-const API_URL = "https://6a1a846abc2f94475492525f.mockapi.io/products";
+/* API_URL is provided by java/api.js */
 
 function getPendingOrder() {
   return JSON.parse(sessionStorage.getItem("pendingOrder") || "null");

@@ -8,11 +8,7 @@ location.href=
 "login.html";
 
 }
-const PRODUCT_API =
-"https://6a1a846abc2f94475492525f.mockapi.io/products";
-
-const ORDER_API =
-"https://6a1a846abc2f94475492525f.mockapi.io/order";
+/* PRODUCT_API and ORDER_API are provided by java/api.js */
 
 let products = [];
 let selectedProductId = null;

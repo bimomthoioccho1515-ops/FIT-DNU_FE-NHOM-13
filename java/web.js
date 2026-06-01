@@ -1,7 +1,6 @@
 /* ================= API ================= */
 
-const API_URL =
-"https://6a1a846abc2f94475492525f.mockapi.io/products";
+/* API_URL is provided by java/api.js */
 
 const CART_KEY = "cart";
 

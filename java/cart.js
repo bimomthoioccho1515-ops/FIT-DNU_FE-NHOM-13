@@ -88,10 +88,10 @@ function renderCartPage() {
         </div>
 
         <div class="cart-actions">
-          <button class="favorite-btn" onclick="addToFavorite(${item.id})">
+          <button class="favorite-btn" onclick="addToFavorite('${item.id}')">
             ${isFavoriteItem ? '✓ Favorited' : '♥ Favorite'}
           </button>
-          <button class="remove-btn" onclick="removeItem(${item.id})">Delete</button>
+          <button class="remove-btn" onclick="removeItem('${item.id}')">Delete</button>
         </div>
       </div>
     `;
@@ -105,7 +105,7 @@ function renderCartPage() {
 function removeItem(id) {
   let cart = getCart();
 
-  cart = cart.filter(item => item.id !== id);
+  cart = cart.filter(item => String(item.id) !== String(id));
 
   saveCart(cart);
 
