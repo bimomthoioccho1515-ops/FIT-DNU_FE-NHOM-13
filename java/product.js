@@ -40,7 +40,7 @@ async function addToCart(id) {
     const res = await fetch(`${API_URL}/${id}`);
     const product = await res.json();
     if (!product.id) {
-      alert("Product not found");
+      alert("Tính năng này đang trong quá trình phát triển. Vui lòng quay lại sau.");
       return;
     }
 
