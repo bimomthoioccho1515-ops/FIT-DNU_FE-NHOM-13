@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thanh toán</title>
+<link rel="stylesheet" href="./css/checkout.css">
+<script src="./java/payment.js" defer></script>
+</head>
+
+<body>
+<header class="main-header">
+  <div class="logo">FashionHub</div>
+  <button class="back" onclick="location.href='checkout.html'">← Quay lại</button>
+</header>
+
+<section class="checkout">
+  <h1>THANH TOÁN</h1>
+  <div id="paymentSummary"></div>
+  <div class="form">
+    <div class="payment-note">
+      Đơn hàng sẽ được xử lý sau khi xác nhận thanh toán.
+    </div>
+    <button onclick="completePayment()">THANH TOÁN QUA CỔNG</button>
+  </div>
+</section>
+</body>
+
+</html>

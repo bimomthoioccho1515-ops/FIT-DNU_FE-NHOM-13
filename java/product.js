@@ -1,7 +1,7 @@
 /* ================= API ================= */
 
 const API_URL =
-"https://YOUR_PROJECT.mockapi.io/products";
+"https://6a1a846abc2f94475492525f.mockapi.io/products";
 
 const CART_KEY =
 "cart";

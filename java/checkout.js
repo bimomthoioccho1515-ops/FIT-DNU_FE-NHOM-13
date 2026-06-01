@@ -1,5 +1,5 @@
 const API_URL =
-"https://YOUR_PROJECT.mockapi.io/products";
+"https://6a1a846abc2f94475492525f.mockapi.io/products";
 
 function getCart(){
 
@@ -113,6 +113,8 @@ document
 "address"
 ).value;
 
+const paymentMethod = document.getElementById("paymentMethod");
+
 if(
 
 !name
@@ -120,7 +122,6 @@ if(
 !phone
 ||
 !address
-
 ){
 
 alert(
@@ -131,101 +132,33 @@ return;
 
 }
 
+if(
+!paymentMethod.value
+){
+  alert("Vui lòng chọn cổng thanh toán");
+  return;
+}
+
 const cart=
 getCart();
 
-try{
-
-for(
-const item
-of cart
-){
-
-const res=
-
-await fetch(
-
-`${API_URL}/${item.id}`
-
-);
-
-const product=
-
-await res.json();
-
-const remain=
-
-product.stock
--
-item.count;
-
-if(
-remain<0
-){
-
-alert(
-
-`${product.name}
- hết hàng`
-
-);
-
-return;
-
+if(!cart.length){
+  alert("Giỏ hàng đang trống");
+  return;
 }
 
-await fetch(
+const pendingOrder = {
+  name,
+  phone,
+  address,
+  paymentMethod: paymentMethod.value,
+  cart,
+  total: document.getElementById("total").innerText
+};
 
-`${API_URL}/${item.id}`,
+sessionStorage.setItem("pendingOrder", JSON.stringify(pendingOrder));
 
-{
-
-method:
-"PUT",
-
-headers:{
-
-"Content-Type":
-"application/json"
-
-},
-
-body:
-
-JSON.stringify({
-
-...product,
-
-stock:
-remain
-
-})
-
-}
-
-);
-
-}
-
-localStorage.removeItem(
-"cart"
-);
-
-alert(
-"Đặt hàng thành công"
-);
-
-location.href=
-"index.html";
-
-}
-catch{
-
-alert(
-"Lỗi đặt hàng"
-);
-
-}
+location.href = "payment.html";
 
 }
 

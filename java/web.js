@@ -4,6 +4,7 @@ const API_URL =
 "https://6a1a846abc2f94475492525f.mockapi.io/products";
 
 const CART_KEY = "cart";
+const FAVORITE_KEY = "favorite";
 
 let products = [];
 
@@ -55,6 +56,24 @@ CART_KEY,
 JSON.stringify(cart)
 );
 
+updateCartCount();
+
+}
+
+function getFavorites(){
+  return JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
+}
+
+function saveFavorites(favorites){
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorites));
+  updateFavoriteCount();
+}
+
+function updateFavoriteCount(){
+  const el = document.getElementById("favoriteCount");
+  if(!el) return;
+  const favorites = getFavorites();
+  el.innerText = favorites.length;
 }
 
 /* ================= ADD ================= */
@@ -429,6 +448,8 @@ window.onload=()=>{
 loadProducts();
 
 updateCartCount();
+
+updateFavoriteCount();
 
 updateAuthButton();
 

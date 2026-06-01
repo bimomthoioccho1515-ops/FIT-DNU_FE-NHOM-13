@@ -18,6 +18,10 @@ Checkout
 rel="stylesheet"
 href="./css/checkout.css">
 
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
 <script
 src="./java/checkout.js"
 defer>
@@ -26,14 +30,20 @@ defer>
 </head>
 
 <body>
+    
+
+<div class="top-navbar">
+  <nav>
+    <a href="#">Find a Store</a>
+    <span>|</span>
+    <a href="#">Help</a>
+    <span>|</span>
+    <a href="login.html" id="authBtn" onclick="handleAuthAction()">Login</a>
+  </nav>
+</div>
 
 <header class="main-header">
-
-<div class="logo">
-
-FashionHub
-
-</div>
+  <a class="logo" style="font-family:akira;" href="index.html">FashionHub</a>
 
 <button
 class="back"
@@ -64,44 +74,27 @@ id="checkoutItems">
 
 
 <div class="form">
-
-<input
-id="name"
-placeholder=
-"Họ tên">
-
-<input
-id="phone"
-placeholder=
-"Số điện thoại">
-
-<textarea
-id="address"
-placeholder=
-"Địa chỉ giao hàng">
-</textarea>
-
-<div
-class="total">
-
-Tổng:
-
-<span
-id="total">
-
-0₫
-
-</span>
-
-</div>
-
-<button
-onclick="placeOrder()">
-
-ĐẶT HÀNG
-
-</button>
-
+  <div class="form-left">
+    <input id="name" placeholder="Họ tên">
+    <input id="phone" placeholder="Số điện thoại">
+    <textarea id="address" placeholder="Địa chỉ giao hàng"></textarea>
+    <select id="paymentMethod">
+      <option value="">Chọn cổng thanh toán</option>
+      <option value="momo">Momo</option>
+      <option value="bank">Ngân hàng</option>
+      <option value="card">Thẻ nội địa</option>
+    </select>
+  </div>
+  <aside class="form-right">
+    <div class="summary-panel">
+      <div class="summary-title">Tóm tắt thanh toán</div>
+      <div class="total">
+        Tổng:
+        <span id="total">0₫</span>
+      </div>
+      <button onclick="placeOrder()">THANH TOÁN</button>
+    </div>
+  </aside>
 </div>
 
 </section>
